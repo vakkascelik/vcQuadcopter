@@ -16,14 +16,11 @@ uint16_t IC1Value 	= 0;
 uint16_t IC2Value 	= 0;
 uint16_t IC3Value 	= 0;
 uint16_t IC4Value 	= 0;
-uint16_t DutyCycle1     = 0;
-uint32_t Frequency1     = 0;
-uint16_t DutyCycle2     = 0;
-uint32_t Frequency2     = 0;
-uint16_t DutyCycle3     = 0;
-uint32_t Frequency3     = 0;
-uint16_t DutyCycle4     = 0;
-uint32_t Frequency4     = 0;
+uint16_t Throttle       = 0;      // DutyCycle1
+uint16_t Yaw            = 0;      // DutyCycle2
+uint16_t Pitch          = 0;      // DutyCycle3
+uint16_t Roll           = 0;      // DutyCycle4
+uint32_t Frequency     = 0;
 
 void initReceiverPWM();
 
@@ -171,15 +168,15 @@ void TIM4_IRQHandler(void)
     if (IC1Value != 0)
     {
       // Duty cycle computation 
-      DutyCycle1 = TIM_GetCapture2(TIM4);//(TIM_GetCapture2(TIM4) * 100) / IC1Value;
+      Throttle = TIM_GetCapture2(TIM4);//(TIM_GetCapture2(TIM4) * 100) / IC1Value;
 
       // Frequency computation 
-      Frequency1 = SystemCoreClock / IC1Value;
+      Frequency = SystemCoreClock / IC1Value;
     }
     else
     {
-      DutyCycle1 = 0;
-      Frequency1 = 0;
+      Throttle = 0;
+      Frequency = 0;
     }
   }
   
@@ -188,21 +185,14 @@ void TIM4_IRQHandler(void)
     // Clear TIM2 Capture compare interrupt pending bit 
     TIM_ClearITPendingBit(TIM4, TIM_IT_CC3);
 
-    // Get the Input Capture value
-    IC3Value = TIM_GetCapture3(TIM4);
-
-    if (IC3Value != 0)
+    if (TIM_GetCapture3(TIM4) != 0)
     {
       // Duty cycle computation 
-      DutyCycle2 = TIM_GetCapture4(TIM4);//(IC4Value * 100) / IC3Value;
-
-      // Frequency computation 
-      Frequency2 = SystemCoreClock / IC3Value;
+      Yaw = TIM_GetCapture4(TIM4);//(IC4Value * 100) / IC3Value;
     }
     else
     {
-      DutyCycle2 = 0;
-      Frequency2 = 0;
+      Yaw = 0;
     }
   }
 }
@@ -214,21 +204,14 @@ void TIM2_IRQHandler(void)
     // Clear TIM2 Capture compare interrupt pending bit 
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
 
-    // Get the Input Capture value
-    IC3Value = TIM_GetCapture1(TIM2);
-
-    if (IC3Value != 0)
+    if (TIM_GetCapture1(TIM2 != 0)
     {
       // Duty cycle computation 
-      DutyCycle3 = (TIM_GetCapture2(TIM2) * 100) / IC3Value;
-
-      // Frequency computation 
-      Frequency3 = SystemCoreClock / IC3Value;
+      Pitch = (TIM_GetCapture2(TIM2) * 100) / IC3Value;
     }
     else
     {
-      DutyCycle3 = 0;
-      Frequency3 = 0;
+      Pitch = 0;
     }
   }
   
@@ -237,21 +220,14 @@ void TIM2_IRQHandler(void)
     // Clear TIM2 Capture compare interrupt pending bit 
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC3);
 
-    // Get the Input Capture value
-    IC4Value = TIM_GetCapture3(TIM2);
-
-    if (IC4Value != 0)
+    if (TIM_GetCapture3(TIM2) != 0)
     {
       // Duty cycle computation 
-      DutyCycle4 = (TIM_GetCapture4(TIM2) * 100) / IC4Value;
-
-      // Frequency computation 
-      Frequency4 = SystemCoreClock / IC4Value;
+      Roll = (TIM_GetCapture4(TIM2) * 100) / IC4Value;
     }
     else
     {
-      DutyCycle4 = 0;
-      Frequency4 = 0;
+      Roll = 0;
     }
   }
 

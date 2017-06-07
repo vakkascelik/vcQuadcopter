@@ -44,14 +44,10 @@ extern FontType_t Terminal_18_24_12;
 
 static volatile Int32U TimingDelay;
 
-extern uint16_t DutyCycle1;
-extern uint32_t Frequency1;
-extern uint16_t DutyCycle2;
-extern uint32_t Frequency2;
-extern uint16_t DutyCycle3;
-extern uint32_t Frequency3;
-extern uint16_t DutyCycle4;
-extern uint32_t Frequency4;
+extern uint16_t Throttle       = 0;      // DutyCycle1
+extern uint16_t Yaw            = 0;      // DutyCycle2
+extern uint16_t Pitch          = 0;      // DutyCycle3
+extern uint16_t Roll           = 0;      // DutyCycle4
 
 extern void initReceiverPWM();
 
@@ -157,7 +153,6 @@ int main(void)
   USART_puts(USART2, "Init complete! Hello World!\r\n"); // just send a message to indicate that it works
   
 
-
   initMotorPWM();
   initReceiverPWM();
   
@@ -169,19 +164,47 @@ int main(void)
 
     /* Toggle LED1 */
     STM_LEDToggle(LED1);
-    
-
-    setFrontLeftPwmValue(DutyCycle1);
-    setFrontRightPwmValue(DutyCycle1);
-    setRearLeftPwmValue(DutyCycle1);
-    setRearRightPwmValue(DutyCycle1);
-    
+       
     /* Read data from accelerometer */
     Accl_Get(&X,&Y,&Z);
     Gyro_Accl_Get (&gX, &gY, &gZ, &aX, &aY, &aZ);
     Magn_Get (&mX, &mY, &mZ);
     Press_Get (&press);
-
+       
+    setFrontLeftPwmValue(Throttle);
+    setFrontRightPwmValue(Throttle);
+    setRearLeftPwmValue(Throttle);
+    setRearRightPwmValue(Throttle);
+    
+    //  a = throttle + rollpid - yawpid;
+    //  b = throttle + pitchpid + yawpid;
+    //  c = throttle - rollpid - yawpid;
+    //  d = throttle - pitchpid + yawpid
+ /*   
+    FrontLeft   = throttle + pitch + roll - yaw
+    FrontRight  = throttle + pitch - roll + yaw
+    RearLeft    = throttle - pitch + roll + yaw
+    RearRight   = throttle - pitch - roll - yaw
+    
+    Pitch Down (forward flight):
+      FrontLeft Motor and FrontRight Motor decrease thrust
+      RearLeft Motor and RearRight Motor increase thrust
+    Pitch Up (back flight):
+      FrontLeft Motor and FrontRight Motor increase thrust
+      RearLeft Motor and RearRight Motor decrease thrust
+    Roll Left (left flight):
+      FrontRight Motor and RearLeft Motor increase thrust
+      FrontLeft Motor and RearRight Motor decrease thrust
+    Roll Right (right flight):
+      FrontRight Motor and RearLeft Motor decreases thrust
+      FrontLeft Motor and RearRight Motor increases thrust
+    Yaw Left (turn left):
+      FrontRight Motor and RearRight Motor increase thrust
+      FrontLeft Motor and RearLeft Motor decrease thrust
+    Yaw Right (turn right):
+      FrontRight Motor and RearRight Motor decrease thrust
+      FrontLeft Motor and RearLeft Motor increase thrust
+*/
 
   }
   
