@@ -11,15 +11,15 @@ Quadcopter Project based on STM32F4 Discovery Board
 
 5- Applies PID Control by X Flight Orientation
 
-CW motors    RearRight,FronLeft
-CCW motors   FrontRight,RearLeft
+	CW motors    RearRight,FronLeft
+	CCW motors   FrontRight,RearLeft
 
            Front
            +1 pitch
-    FronLeft  FrontRight
--1 roll    \-/     +1 roll   right
-           /-\
-    RearLeft  RearRight
+		FronLeft  FrontRight
+	-1 roll    \-/     +1 roll   right
+			   /-\
+		RearLeft  RearRight
            -1 pitch
 		   
 6- Motor Control Eqautions
