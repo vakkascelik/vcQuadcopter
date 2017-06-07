@@ -176,10 +176,6 @@ int main(void)
     setRearLeftPwmValue(Throttle);
     setRearRightPwmValue(Throttle);
     
-    //  a = throttle + rollpid - yawpid;
-    //  b = throttle + pitchpid + yawpid;
-    //  c = throttle - rollpid - yawpid;
-    //  d = throttle - pitchpid + yawpid
  /*   
     FrontLeft   = throttle + pitch + roll - yaw
     FrontRight  = throttle + pitch - roll + yaw
@@ -204,6 +200,15 @@ int main(void)
     Yaw Right (turn right):
       FrontRight Motor and RearRight Motor decrease thrust
       FrontLeft Motor and RearLeft Motor increase thrust
+    
+    accelerationX = (signed int)(((signed int)rawData_X) * 3.9);
+    accelerationY = (signed int)(((signed int)rawData_Y) * 3.9);
+    accelerationZ = (signed int)(((signed int)rawData_Z) * 3.9);
+    pitch = 180 * atan (accelerationX/sqrt(accelerationY*accelerationY + accelerationZ*accelerationZ))/M_PI;
+    roll = 180 * atan (accelerationY/sqrt(accelerationX*accelerationX + accelerationZ*accelerationZ))/M_PI;
+    yaw = 180 * atan (accelerationZ/sqrt(accelerationX*accelerationX + accelerationZ*accelerationZ))/M_PI;
+    
+    filteredData = (1-weight)*filteredData + weight*newData
 */
 
   }
