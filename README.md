@@ -17,8 +17,8 @@ Quadcopter Project based on STM32F4 Discovery Board
            Front
            +1 pitch
     FronLeft  FrontRight
- -1 roll    \-/     +1 roll   right
-            /-\
+ -1 roll  \\-//     +1 roll   right
+          //-\\
     RearLeft  RearRight
            -1 pitch
 		   
