@@ -58,12 +58,6 @@ EventEXC=0
 EventFOLD=0
 EventLSU=0
 EventSLEEP=0
-[DataLog]
-LogEnabled=0
-GraphEnabled=0
-ShowTimeLog=1
-SumEnabled=0
-ShowTimeSum=1
 [EventLog]
 Title_0=Ch3
 Symbol_0=0 4 1
@@ -73,13 +67,6 @@ Title_2=Ch1
 Symbol_2=0 4 1
 Title_3=Ch0
 Symbol_3=0 4 1
-LogEnabled=0
-GraphEnabled=0
-ShowTimeLog=1
-SumEnabled=0
-ShowTimeSum=1
-SumSortOrder=0
-[InterruptLog]
 LogEnabled=0
 GraphEnabled=0
 ShowTimeLog=1
@@ -103,14 +90,38 @@ Exclusions=
 Enabled=0
 [CallStackStripe]
 ShowTiming=1
+[InterruptLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+SumEnabled=0
+ShowTimeSum=1
+SumSortOrder=0
+[DataLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+SumEnabled=0
+ShowTimeSum=1
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\modules\altimu10_drv.c}.89.5" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\modules\rc_input_pwm.c}.230.7" 0 0 1 "" 0 "" 0
-Bp2=_ 0 "EMUL_CODE" "{$PROJ_DIR$\modules\rc_input_pwm.c}.253.7" 0 0 1 "" 0 "" 0
-Count=3
+Count=0
+[Interrupts]
+Enabled=1
+[MemConfig]
+Base=1
+Manual=0
+Ddf=1
+TypeViol=0
+Stop=1
+[Trace1]
+Enabled=0
+ShowSource=1
 [Aliases]
 A0=_ "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\Accelerometer\startup\startup_stm32f4xx.s" ""
 Count=1
 SuppressDialog=0
+[Simulator]
+Freq=10000000
+MultiCoreRunAll=1

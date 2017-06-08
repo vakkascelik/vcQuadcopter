@@ -38,16 +38,15 @@
 
 #define TICK_PER_SEC          25
 
-extern FontType_t Terminal_6_8_6;
-extern FontType_t Terminal_9_12_6;
-extern FontType_t Terminal_18_24_12;
+/* AHRS/IMU structure */
+TM_AHRSIMU_t AHRSIMU;
 
 static volatile Int32U TimingDelay;
 
-extern uint16_t Throttle       = 0;      // DutyCycle1
-extern uint16_t Yaw            = 0;      // DutyCycle2
-extern uint16_t Pitch          = 0;      // DutyCycle3
-extern uint16_t Roll           = 0;      // DutyCycle4
+extern uint16_t Throttle;       // DutyCycle1
+extern uint16_t Yaw;            // DutyCycle2
+extern uint16_t Pitch;          // DutyCycle3
+extern uint16_t Roll;           // DutyCycle4
 
 extern void initReceiverPWM();
 
@@ -60,9 +59,6 @@ extern void setRearRightPwmValue (uint16_t value);
 extern void InitUSART2(u32 bauld);
 extern void TxUSART(char byte);
 extern void USART_puts(USART_TypeDef* USARTx, volatile char *s);
-
-/* Private function prototypes -----------------------------------------------*/
-void TIM_Config(void);
 
 /* variable for critical section entry control */
 Int32U CriticalSecCntr;
@@ -119,6 +115,8 @@ int main(void)
   Int16S mX, mY, mZ;
   Int32S press; 
   
+  float gx, gy, gz, ax, ay, az, mx, my, mz;
+  
   uint16_t usart_receive;
   
   int firstDelay;
@@ -156,6 +154,9 @@ int main(void)
   initMotorPWM();
   initReceiverPWM();
   
+  /* Init structure with 1000hZ sample rate, 0.5 beta and 0 inclination (3.5 degrees is inclination in Ljubljana, Slovenia) on July, 2016 */
+  TM_AHRSIMU_Init(&AHRSIMU, 1000, 0.5, 0);
+  
   STM_LEDInit(LED1);
   while(1)
   {
@@ -170,6 +171,27 @@ int main(void)
     Gyro_Accl_Get (&gX, &gY, &gZ, &aX, &aY, &aZ);
     Magn_Get (&mX, &mY, &mZ);
     Press_Get (&press);
+
+    
+    /* Convert data to gees, deg/sec and microTesla respectively */
+    gx = ( (float)gX * 2000.0f) / 32768.0f;
+    gy = ( (float)gY * 2000.0f) / 32768.0f;
+    gz = ( (float)gZ * 2000.0f) / 32768.0f;
+    
+    ax = ( (float)aX * 2.0f) / 32768.0f;
+    ay = ( (float)aY * 2.0f) / 32768.0f;
+    az = ( (float)aZ * 2.0f) / 32768.0f;
+    
+    mx = (float)mX;
+    my = (float)mY;
+    mz = (float)mZ;
+    
+    /* Call update function */
+    /* This function must be called periodically in inteervals set by sample rate on initialization process */
+    TM_AHRSIMU_UpdateAHRS(&AHRSIMU, AHRSIMU_DEG2RAD(gx), AHRSIMU_DEG2RAD(gy), AHRSIMU_DEG2RAD(gz), ax, ay, az, mx, my, mz);
+    
+    /* Read new roll, pitch and yaw values */
+    printf("Roll: %f; Pitch: %f, Yaw: %f\r\n", AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
        
     setFrontLeftPwmValue(Throttle);
     setFrontRightPwmValue(Throttle);

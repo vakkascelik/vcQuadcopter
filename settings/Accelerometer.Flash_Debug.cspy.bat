@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\settings\Accelerometer.Flash_Debug.general.xcl" --backend -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\settings\Accelerometer.Flash_Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\settings\Accelerometer.Flash_Debug.general.xcl" --backend -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\settings\Accelerometer.Flash_Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\settings\Accelerometer.Flash_Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\settings\Accelerometer.Flash_Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\settings\Accelerometer.Flash_Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\settings\Accelerometer.Flash_Debug.driver.xcl" 
 
 @echo off 
 :end

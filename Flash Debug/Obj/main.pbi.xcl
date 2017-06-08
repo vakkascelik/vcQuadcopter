@@ -1,18 +1,18 @@
-"C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\app\main.c"
+"C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\app\main.c"
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\app
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\app
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\modules
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\modules
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\board
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\board
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\..\..\STM32F4xx_DSP_StdPeriph_Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\..\..\STM32F4xx_DSP_StdPeriph_Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\..\..\STM32F4xx_DSP_StdPeriph_Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\..\..\STM32F4xx_DSP_StdPeriph_Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\CMSIS\Include
 -I
@@ -20,13 +20,13 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc\c
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\app
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\app
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\modules
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\modules
 -I
-C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\Accelerometer2_v3\board
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\board
 -I
 C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\STM32F4xx_DSP_StdPeriph_Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include
 -I

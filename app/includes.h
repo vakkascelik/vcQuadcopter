@@ -25,10 +25,7 @@
 
 #include "iar_stm32f407zg_sk.h"
 
-#include "drv_glcd_cnfg.h"
-#include "drv_glcd.h"
-#include "glcd_ll.h"
-#include "iar_logo.h"
+#include "tm_stm32_ahrs_imu.h"
 
 #include "accl_drv.h"
 #include "i2c1_drv.h"

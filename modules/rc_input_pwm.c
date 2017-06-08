@@ -204,7 +204,7 @@ void TIM2_IRQHandler(void)
     // Clear TIM2 Capture compare interrupt pending bit 
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
 
-    if (TIM_GetCapture1(TIM2 != 0)
+    if (TIM_GetCapture1(TIM2) != 0)
     {
       // Duty cycle computation 
       Pitch = (TIM_GetCapture2(TIM2) * 100) / IC3Value;
