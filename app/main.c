@@ -117,6 +117,18 @@ int main(void)
   
   float gx, gy, gz, ax, ay, az, mx, my, mz;
   
+  float KP_yaw, KI_yaw, KD_yaw;
+  float KP_pitch, KI_pitch, KD_pitch;
+  float KP_roll, KI_roll, KD_roll;
+  
+  float pError_yaw, iError_yaw, dError_yaw, previousError_yaw;
+  float pError_pitch, iError_pitch, dError_pitch, previousError_pitch;
+  float pError_roll, iError_roll, dError_roll, previousError_roll;
+  
+  float yawPID, pitchPID, rollPID;
+  
+  uint16_t fronleft_Throttle, frontright_Throttle, rearleft_Throttle, rearright_Throttle;
+  
   uint16_t usart_receive;
   
   int firstDelay;
@@ -192,11 +204,37 @@ int main(void)
     
     /* Read new roll, pitch and yaw values */
     printf("Roll: %f; Pitch: %f, Yaw: %f\r\n", AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
-       
-    setFrontLeftPwmValue(Throttle);
-    setFrontRightPwmValue(Throttle);
-    setRearLeftPwmValue(Throttle);
-    setRearRightPwmValue(Throttle);
+    
+    
+    // PID Control
+    pError_yaw = Input - Output;
+    iError_yaw = iError_yaw + pError_yaw*dt;
+    dError_yaw = (pError_yaw - previousError_yaw);
+    previousError_yaw = pError_yaw;
+    
+    pError_pitch = Input - Output;
+    iError_pitch = iError_pitch + pError_pitch*dt;
+    dError_pitch = (pError_pitch - previousError_pitch);
+    previousError_pitch = pError_pitch;
+    
+    pError_roll = Input - Output;
+    iError_roll = iError_roll + pError_roll*dt;
+    dError_roll = (pError_roll - previousError_roll);
+    previousError_roll = pError_roll;
+
+    yawPID   = KP_yaw*pError_yaw     + KI_yaw*iError_yaw     + KD_yaw*dError_yaw;
+    pitchPID = KP_pitch*pError_pitch + KI_pitch*iError_pitch + KD_pitch*dError_pitch;
+    rollPID  = KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
+    
+    fronleft_Throttle   = (uint16_t)(Throttle + pitchPID + rollPID - yawPID);
+    frontright_Throttle = (uint16_t)(Throttle + pitchPID - rollPID + yawPID);
+    rearleft_Throttle   = (uint16_t)(Throttle - pitchPID + rollPID + yawPID);
+    rearright_Throttle  = (uint16_t)(Throttle - pitchPID - rollPID - yawPID);
+      
+    setFrontLeftPwmValue(fronleft_Throttle);
+    setFrontRightPwmValue(frontright_Throttle);
+    setRearLeftPwmValue(rearleft_Throttle);
+    setRearRightPwmValue(rearright_Throttle);
     
  /*   
     FrontLeft   = throttle + pitch + roll - yaw
@@ -223,14 +261,6 @@ int main(void)
       FrontRight Motor and RearRight Motor decrease thrust
       FrontLeft Motor and RearLeft Motor increase thrust
     
-    accelerationX = (signed int)(((signed int)rawData_X) * 3.9);
-    accelerationY = (signed int)(((signed int)rawData_Y) * 3.9);
-    accelerationZ = (signed int)(((signed int)rawData_Z) * 3.9);
-    pitch = 180 * atan (accelerationX/sqrt(accelerationY*accelerationY + accelerationZ*accelerationZ))/M_PI;
-    roll = 180 * atan (accelerationY/sqrt(accelerationX*accelerationX + accelerationZ*accelerationZ))/M_PI;
-    yaw = 180 * atan (accelerationZ/sqrt(accelerationX*accelerationX + accelerationZ*accelerationZ))/M_PI;
-    
-    filteredData = (1-weight)*filteredData + weight*newData
 */
 
   }
