@@ -18,8 +18,8 @@ uint16_t IC3Value 	= 0;
 uint16_t IC4Value 	= 0;
 uint16_t Throttle       = 0;      // DutyCycle1
 uint16_t Yaw            = 0;      // DutyCycle2
-uint16_t Pitch          = 0;      // DutyCycle3
-uint16_t Roll           = 0;      // DutyCycle4
+uint32_t Pitch          = 0;      // DutyCycle3
+uint32_t Roll           = 0;      // DutyCycle4
 uint32_t Frequency     = 0;
 
 void initReceiverPWM();
@@ -28,8 +28,9 @@ void TIM_2_4_Config(void)
 {
   GPIO_InitTypeDef GPIO_InitStructure;
 
-  /* TIM4 clock enable */
+  /* TIM2 and TIM4 clock enable */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 
   /* GPIOA and GPIOD clock enable */
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOD, ENABLE);
@@ -106,6 +107,7 @@ void initReceiverPWM()
   TIM_TimeBaseStructure2.TIM_ClockDivision = 0;
   TIM_TimeBaseStructure2.TIM_CounterMode = TIM_CounterMode_Up;
   TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure2);
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure2);
   
   TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
   TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;
@@ -137,8 +139,8 @@ void initReceiverPWM()
   TIM_ICInitStructure.TIM_Channel = TIM_Channel_3;
   TIM_PWMIConfig3(TIM2, &TIM_ICInitStructure);
 
-  /* Select the TIM2 Input Trigger: TI2FP2 */
-  TIM_SelectInputTrigger(TIM2, TIM_TS_TI2FP2);
+  /* Select the TIM2 Input Trigger: TI1FP1 */
+  TIM_SelectInputTrigger(TIM2, TIM_TS_TI1FP1);
 
   /* Select the slave Mode: Reset Mode */
   TIM_SelectSlaveMode(TIM2, TIM_SlaveMode_Reset);
@@ -207,11 +209,11 @@ void TIM2_IRQHandler(void)
     if (TIM_GetCapture1(TIM2) != 0)
     {
       // Duty cycle computation 
-      Pitch = (TIM_GetCapture2(TIM2) * 100) / IC3Value;
+      Roll = TIM_GetCapture2(TIM2);// * 100) / IC3Value;
     }
     else
     {
-      Pitch = 0;
+      Roll = 0;
     }
   }
   
@@ -223,11 +225,11 @@ void TIM2_IRQHandler(void)
     if (TIM_GetCapture3(TIM2) != 0)
     {
       // Duty cycle computation 
-      Roll = (TIM_GetCapture4(TIM2) * 100) / IC4Value;
+      Pitch = TIM_GetCapture4(TIM2);// * 100) / IC4Value;
     }
     else
     {
-      Roll = 0;
+      Pitch = 0;
     }
   }
 

@@ -45,8 +45,8 @@ static volatile Int32U TimingDelay;
 
 extern uint16_t Throttle;       // DutyCycle1
 extern uint16_t Yaw;            // DutyCycle2
-extern uint16_t Pitch;          // DutyCycle3
-extern uint16_t Roll;           // DutyCycle4
+extern uint32_t Pitch;          // DutyCycle3
+extern uint32_t Roll;           // DutyCycle4
 
 extern void initReceiverPWM();
 
@@ -205,7 +205,7 @@ int main(void)
     /* Read new roll, pitch and yaw values */
     printf("Roll: %f; Pitch: %f, Yaw: %f\r\n", AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
     
-    
+ /*   
     // PID Control
     pError_yaw = Input - Output;
     iError_yaw = iError_yaw + pError_yaw*dt;
@@ -221,15 +221,15 @@ int main(void)
     iError_roll = iError_roll + pError_roll*dt;
     dError_roll = (pError_roll - previousError_roll);
     previousError_roll = pError_roll;
-
-    yawPID   = KP_yaw*pError_yaw     + KI_yaw*iError_yaw     + KD_yaw*dError_yaw;
-    pitchPID = KP_pitch*pError_pitch + KI_pitch*iError_pitch + KD_pitch*dError_pitch;
-    rollPID  = KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
+*/
+    yawPID   = 0;//KP_yaw*pError_yaw     + KI_yaw*iError_yaw     + KD_yaw*dError_yaw;
+    pitchPID = 0;//KP_pitch*pError_pitch + KI_pitch*iError_pitch + KD_pitch*dError_pitch;
+    rollPID  = 0;//KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
     
-    fronleft_Throttle   = (uint16_t)(Throttle + pitchPID + rollPID - yawPID);
-    frontright_Throttle = (uint16_t)(Throttle + pitchPID - rollPID + yawPID);
-    rearleft_Throttle   = (uint16_t)(Throttle - pitchPID + rollPID + yawPID);
-    rearright_Throttle  = (uint16_t)(Throttle - pitchPID - rollPID - yawPID);
+    fronleft_Throttle   = (uint16_t)(Throttle + pitchPID + rollPID - yawPID + (Pitch-4102) + (Roll-1485) - (Yaw-4105));
+    frontright_Throttle = (uint16_t)(Throttle + pitchPID - rollPID + yawPID + (Pitch-4102) - (Roll-1485) + (Yaw-4105));
+    rearleft_Throttle   = (uint16_t)(Throttle - pitchPID + rollPID + yawPID - (Pitch-4102) + (Roll-1485) + (Yaw-4105));
+    rearright_Throttle  = (uint16_t)(Throttle - pitchPID - rollPID - yawPID - (Pitch-4102) - (Roll-1485) - (Yaw-4105));
       
     setFrontLeftPwmValue(fronleft_Throttle);
     setFrontRightPwmValue(frontright_Throttle);
