@@ -44,13 +44,13 @@ TM_AHRSIMU_t AHRSIMU;
 static volatile Int32U TimingDelay;
 
 extern uint16_t Throttle;       // DutyCycle1
-extern uint16_t Yaw;            // DutyCycle2
+extern uint32_t Yaw;            // DutyCycle2
 extern uint32_t Pitch;          // DutyCycle3
 extern uint32_t Roll;           // DutyCycle4
 
-uint16_t Yaw_offset;
-uint32_t Pitch_offset;
-uint32_t Roll_offset;
+int32_t Yaw_offset;
+int32_t Pitch_offset;
+int32_t Roll_offset;
 
 extern void initReceiverPWM();
 
@@ -112,7 +112,7 @@ void TimingDelay_Decrement(void)
 int main(void)
 {
 
-  int cursor_x;
+  char log[1024];
     
   Int16S X, Y, Z;
   Int16S gX, gY, gZ, aX, aY, aZ;
@@ -129,7 +129,7 @@ int main(void)
   float pError_pitch, iError_pitch, dError_pitch, previousError_pitch;
   float pError_roll, iError_roll, dError_roll, previousError_roll;
   
-  float yawPID, pitchPID, rollPID;
+  int16_t yawPID, pitchPID, rollPID;
   
   uint16_t fronleft_Throttle, frontright_Throttle, rearleft_Throttle, rearright_Throttle;
   
@@ -174,6 +174,7 @@ int main(void)
   TM_AHRSIMU_Init(&AHRSIMU, 1000, 0.5, 0);
   
   STM_LEDInit(LED1);
+  DelayResolution100us(100000/TICK_PER_SEC);
   while(1)
   {
     /* Delay */
@@ -206,13 +207,13 @@ int main(void)
     /* This function must be called periodically in inteervals set by sample rate on initialization process */
     TM_AHRSIMU_UpdateAHRS(&AHRSIMU, AHRSIMU_DEG2RAD(gx), AHRSIMU_DEG2RAD(gy), AHRSIMU_DEG2RAD(gz), ax, ay, az, mx, my, mz);
     
-    Yaw_offset=Yaw-4105;
-    Pitch_offset=Pitch-4102;
-    Roll_offset=Roll-1485;
+    Yaw_offset=Yaw-4096;
+    Pitch_offset=Pitch-4096;
+    Roll_offset=Roll-1482;
     
     /* Read new roll, pitch and yaw values */
-    printf("Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
-    
+    sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
+    USART_puts(USART2, log);
  /*   
     // PID Control
     pError_yaw = AHRSIMU.Yaw - Output;
@@ -234,15 +235,15 @@ int main(void)
     pitchPID = 0;//KP_pitch*pError_pitch + KI_pitch*iError_pitch + KD_pitch*dError_pitch;
     rollPID  = 0;//KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
     
-    fronleft_Throttle   = (uint16_t)(Throttle + pitchPID + rollPID - yawPID + Pitch_offset + Roll_offset - Yaw_offset);
-    frontright_Throttle = (uint16_t)(Throttle + pitchPID - rollPID + yawPID + Pitch_offset - Roll_offset + Yaw_offset);
-    rearleft_Throttle   = (uint16_t)(Throttle - pitchPID + rollPID + yawPID - Pitch_offset + Roll_offset + Yaw_offset);
-    rearright_Throttle  = (uint16_t)(Throttle - pitchPID - rollPID - yawPID - Pitch_offset - Roll_offset - Yaw_offset);
+    fronleft_Throttle   = (Throttle + pitchPID + rollPID - yawPID + Pitch_offset + Roll_offset - Yaw_offset);
+    frontright_Throttle = (Throttle + pitchPID - rollPID + yawPID + Pitch_offset - Roll_offset + Yaw_offset);
+    rearleft_Throttle   = (Throttle - pitchPID + rollPID + yawPID - Pitch_offset + Roll_offset + Yaw_offset);
+    rearright_Throttle  = (Throttle - pitchPID - rollPID - yawPID - Pitch_offset - Roll_offset - Yaw_offset);
       
-    setFrontLeftPwmValue(fronleft_Throttle);
-    setFrontRightPwmValue(frontright_Throttle);
-    setRearLeftPwmValue(rearleft_Throttle);
-    setRearRightPwmValue(rearright_Throttle);
+    setFrontLeftPwmValue((uint16_t)fronleft_Throttle);
+    setFrontRightPwmValue((uint16_t)frontright_Throttle);
+    setRearLeftPwmValue((uint16_t)rearleft_Throttle);
+    setRearRightPwmValue((uint16_t)rearright_Throttle);
     
  /*   
     FrontLeft   = throttle + pitch + roll - yaw

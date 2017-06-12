@@ -19,7 +19,7 @@ LeaveTargetRunning=_ 0
 stlinkResetStyle=0
 stlinkResetStrategy=1
 [DebugChecksum]
-Checksum=334571380
+Checksum=-889211762
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -42,8 +42,8 @@ PcSampCYCTAP=1
 PcSampPOSTCNT=15
 PcSampIndex=0
 DataLogMode=0
-ITMportsEnable=1
-ITMportsTermIO=1
+ITMportsEnable=0
+ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [Interrupts]
