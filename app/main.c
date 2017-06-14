@@ -59,6 +59,7 @@ extern void setFrontLeftPwmValue (uint16_t value);
 extern void setFrontRightPwmValue (uint16_t value);
 extern void setRearLeftPwmValue (uint16_t value);
 extern void setRearRightPwmValue (uint16_t value);
+extern void calibrateESCs(void);
 
 extern void InitUSART2(u32 bauld);
 extern void TxUSART(char byte);
@@ -168,6 +169,9 @@ int main(void)
   
 
   initMotorPWM();
+  DelayResolution100us(30000);  // 3 seconds delay
+  calibrateESCs();
+  DelayResolution100us(20000);  // 2 seconds delay
   initReceiverPWM();
   
   /* Init structure with 1000hZ sample rate, 0.5 beta and 0 inclination (3.5 degrees is inclination in Ljubljana, Slovenia) on July, 2016 */

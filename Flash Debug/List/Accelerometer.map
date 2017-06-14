@@ -1,108 +1,146 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.80.3.12102/W32 for ARM                13/Jun/2017  00:41:04
+# IAR ELF Linker V7.80.1.11864/W32 for ARM                14/Jun/2017  09:02:11
 # Copyright 2007-2016 IAR Systems AB.
 #
 #    Output file  =  
-#        C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
 #        Debug\Exe\Accelerometer.out
 #    Map file     =  
-#        C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
 #        Debug\List\Accelerometer.map
 #    Command line =  
-#        "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\accl_drv.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\altimu10_drv.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\i2c1_drv.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\iar_stm32f407zg_sk.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\main.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\misc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\motor_pwm.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\rc_input_pwm.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\startup_stm32f4xx.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4_usart.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_adc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_can.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_crc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_cryp.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_cryp_aes.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_cryp_des.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_cryp_tdes.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_dac.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_dbgmcu.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_dcmi.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_dma.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_exti.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_flash.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_fsmc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_gpio.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_hash.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_hash_md5.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_hash_sha1.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_i2c.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_it.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_iwdg.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_pwr.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_rcc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_rng.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_rtc.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_sdio.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_spi.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_syscfg.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_tim.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_usart.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\stm32f4xx_wwdg.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\system_stm32f4xx.o" "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Obj\tm_stm32_ahrs_imu.o" -o "C:\Users\MSI\Documents\IAR Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
-#        Debug\Exe\Accelerometer.out" --map "C:\Users\MSI\Documents\IAR
+#        "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\accl_drv.o" "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\altimu10_drv.o" "C:\Users\vakkas.celik\Documents\IAR
 #        Embedded
-#        Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\i2c1_drv.o" "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\iar_stm32f407zg_sk.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\main.o" "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\misc.o" "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\motor_pwm.o" "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\rc_input_pwm.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\startup_stm32f4xx.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4_usart.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_adc.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_can.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_crc.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_cryp.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_cryp_aes.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_cryp_des.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_cryp_tdes.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_dac.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_dbgmcu.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_dcmi.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_dma.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_exti.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_flash.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_fsmc.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_gpio.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_hash.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_hash_md5.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_hash_sha1.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_i2c.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_it.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_iwdg.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_pwr.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_rcc.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_rng.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_rtc.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_sdio.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_spi.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_syscfg.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_tim.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_usart.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\stm32f4xx_wwdg.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\system_stm32f4xx.o" "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Obj\tm_stm32_ahrs_imu.o" -o "C:\Users\vakkas.celik\Documents\IAR
+#        Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
+#        Debug\Exe\Accelerometer.out" --map
+#        "C:\Users\vakkas.celik\Documents\IAR Embedded
+#        Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash
 #        Debug\List\Accelerometer.map" --config "C:\Program Files (x86)\IAR
 #        Systems\Embedded Workbench 7.5\arm\config\linker\ST\stm32f407xG.icf"
 #        --semihosting --entry __iar_program_start --redirect
@@ -135,7 +173,7 @@ initialize by copy { rw };
   .intvec             ro code  0x08000000   0x188  startup_stm32f4xx.o [1]
                              - 0x08000188   0x188
 
-"P1":                                      0x4ba0
+"P1":                                      0x4b30
   .text               ro code  0x08000188   0xd24  tm_stm32_ahrs_imu.o [1]
   .text               ro code  0x08000eac    0x4e  FltToDbl.o [4]
   .text               ro code  0x08000efa     0xa  xsprout.o [3]
@@ -166,42 +204,69 @@ initialize by copy { rw };
   .text               ro code  0x08002a70    0x6c  localeconv.o [3]
   .text               ro code  0x08002adc     0xe  div.o [3]
   .text               ro code  0x08002aec     0x2  I64DivZer.o [5]
-  .text               ro code  0x08002af0   0x5a8  stm32f4xx_tim.o [1]
-  .text               ro code  0x08003098   0x370  main.o [1]
-  .text               ro code  0x08003408    0x1c  main.o [1]
-  .text               ro code  0x08003424    0x1c  main.o [1]
-  .text               ro code  0x08003440   0x288  i2c1_drv.o [1]
-  .text               ro code  0x080036c8   0x350  altimu10_drv.o [1]
-  .text               ro code  0x08003a18   0x138  stm32f4_usart.o [1]
-  .text               ro code  0x08003b50   0x1e4  motor_pwm.o [1]
-  .text               ro code  0x08003d34   0x308  rc_input_pwm.o [1]
-  .text               ro code  0x0800403c    0x70  iar_stm32f407zg_sk.o [1]
-  .text               ro code  0x080040ac    0x78  accl_drv.o [1]
-  .text               ro code  0x08004124    0x34  sprintf.o [3]
-  .text               ro code  0x08004158   0x1e8  stm32f4xx_i2c.o [1]
-  .text               ro code  0x08004340   0x17c  stm32f4xx_rcc.o [1]
-  .text               ro code  0x080044bc   0x10a  stm32f4xx_gpio.o [1]
-  .text               ro code  0x080045c8    0x70  misc.o [1]
-  .text               ro code  0x08004638    0x16  i2c1_drv.o [1]
-  .text               ro code  0x08004650   0x1bc  stm32f4xx_usart.o [1]
-  .text               ro code  0x0800480c   0x154  system_stm32f4xx.o [1]
-  .rodata             const    0x08004960    0x50  main.o [1]
-  .text               ro code  0x080049b0    0x40  zero_init3.o [5]
-  .text               ro code  0x080049f0    0x2c  copy_init3.o [5]
-  .text               ro code  0x08004a1c    0x28  data_init.o [5]
-  .text               ro code  0x08004a44    0x22  fpinit_M.o [4]
-  .iar.init_table     const    0x08004a68    0x24  - Linker created -
-  .rodata             const    0x08004a8c    0x20  main.o [1]
-  .text               ro code  0x08004aac    0x1a  cmain.o [5]
-  .text               ro code  0x08004ac6     0x4  low_level_init.o [3]
-  .text               ro code  0x08004aca     0x4  exit.o [3]
-  .text               ro code  0x08004ad0     0xa  cexit.o [5]
-  .text               ro code  0x08004adc    0x14  exit.o [6]
-  .text               ro code  0x08004af0    0x18  stm32f4xx_it.o [1]
-  .rodata             const    0x08004b08    0x10  iar_stm32f407zg_sk.o [1]
-  .text               ro code  0x08004b18    0x10  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004b28     0xc  cstartup_M.o [5]
-  .rodata             const    0x08004b34     0x8  iar_stm32f407zg_sk.o [1]
+  .text               ro code  0x08002af0   0x484  stm32f4xx_tim.o [1]
+  .text               ro code  0x08002f74   0x384  main.o [1]
+  .text               ro code  0x080032f8    0x1c  main.o [1]
+  .text               ro code  0x08003314    0x1c  main.o [1]
+  .text               ro code  0x08003330   0x288  i2c1_drv.o [1]
+  .text               ro code  0x080035b8   0x350  altimu10_drv.o [1]
+  .text               ro code  0x08003908   0x138  stm32f4_usart.o [1]
+  .text               ro code  0x08003a40   0x248  motor_pwm.o [1]
+  .text               ro code  0x08003c88   0x348  rc_input_pwm.o [1]
+  .text               ro code  0x08003fd0    0x70  iar_stm32f407zg_sk.o [1]
+  .text               ro code  0x08004040    0x78  accl_drv.o [1]
+  .text               ro code  0x080040b8    0x34  sprintf.o [3]
+  .text               ro code  0x080040ec   0x1e8  stm32f4xx_i2c.o [1]
+  .text               ro code  0x080042d4   0x17c  stm32f4xx_rcc.o [1]
+  .text               ro code  0x08004450   0x10a  stm32f4xx_gpio.o [1]
+  .text               ro code  0x0800455c    0x70  misc.o [1]
+  .text               ro code  0x080045cc    0x16  i2c1_drv.o [1]
+  .text               ro code  0x080045e4   0x1bc  stm32f4xx_usart.o [1]
+  .text               ro code  0x080047a0   0x154  system_stm32f4xx.o [1]
+  .rodata             const    0x080048f4    0x50  main.o [1]
+  .text               ro code  0x08004944    0x40  zero_init3.o [5]
+  .text               ro code  0x08004984    0x2c  copy_init3.o [5]
+  .text               ro code  0x080049b0    0x28  data_init.o [5]
+  .text               ro code  0x080049d8    0x22  fpinit_M.o [4]
+  .iar.init_table     const    0x080049fc    0x24  - Linker created -
+  .rodata             const    0x08004a20    0x20  main.o [1]
+  .text               ro code  0x08004a40    0x1a  cmain.o [5]
+  .text               ro code  0x08004a5a     0x4  low_level_init.o [3]
+  .text               ro code  0x08004a5e     0x4  exit.o [3]
+  .text               ro code  0x08004a64     0xa  cexit.o [5]
+  .text               ro code  0x08004a70    0x14  exit.o [6]
+  .text               ro code  0x08004a84    0x18  stm32f4xx_it.o [1]
+  .rodata             const    0x08004a9c    0x10  iar_stm32f407zg_sk.o [1]
+  .text               ro code  0x08004aac    0x10  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004abc     0xc  cstartup_M.o [5]
+  .rodata             const    0x08004ac8     0x8  iar_stm32f407zg_sk.o [1]
+  .text               ro code  0x08004ad0     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004ad4     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004ad8     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004adc     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004ae0     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004ae4     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004ae8     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004aec     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004af0     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004af4     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004af8     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004afc     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b00     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b04     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b08     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b0c     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b10     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b14     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b18     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b1c     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b20     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b24     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b28     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b2c     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b30     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b34     0x4  startup_stm32f4xx.o [1]
+  .text               ro code  0x08004b38     0x4  startup_stm32f4xx.o [1]
   .text               ro code  0x08004b3c     0x4  startup_stm32f4xx.o [1]
   .text               ro code  0x08004b40     0x4  startup_stm32f4xx.o [1]
   .text               ro code  0x08004b44     0x4  startup_stm32f4xx.o [1]
@@ -251,38 +316,10 @@ initialize by copy { rw };
   .text               ro code  0x08004bf4     0x4  startup_stm32f4xx.o [1]
   .text               ro code  0x08004bf8     0x4  startup_stm32f4xx.o [1]
   .text               ro code  0x08004bfc     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c00     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c04     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c08     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c0c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c10     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c14     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c18     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c1c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c20     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c24     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c28     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c2c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c30     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c34     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c38     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c3c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c40     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c44     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c48     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c4c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c50     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c54     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c58     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c5c     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c60     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c64     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c68     0x4  startup_stm32f4xx.o [1]
-  .text               ro code  0x08004c6c     0x4  startup_stm32f4xx.o [1]
-  .rodata             const    0x08004c70     0x0  zero_init3.o [5]
-  .rodata             const    0x08004c70     0x0  copy_init3.o [5]
-  Initializer bytes   const    0x08004c70    0xb8  <for P4 s0>
-                             - 0x08004d28  0x4ba0
+  .rodata             const    0x08004c00     0x0  zero_init3.o [5]
+  .rodata             const    0x08004c00     0x0  copy_init3.o [5]
+  Initializer bytes   const    0x08004c00    0xb8  <for P4 s0>
+                             - 0x08004cb8  0x4b30
 
 "P3":                                      0x2000
   CSTACK                       0x10000000  0x2000  <Block>
@@ -344,7 +381,7 @@ Zero (__iar_zero_init3)
 
 Copy (__iar_copy_init3)
     1 source range, total size 0xb8:
-          0x08004c70  0xb8
+          0x08004c00  0xb8
     1 destination range, total size 0xb8:
           0x20000000  0xb8
 
@@ -356,27 +393,27 @@ Copy (__iar_copy_init3)
 
     Module                 ro code  ro data  rw data
     ------                 -------  -------  -------
-C:\Users\MSI\Documents\IAR Embedded Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash Debug\Obj: [1]
+C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash Debug\Obj: [1]
     accl_drv.o                 120
     altimu10_drv.o             848
     i2c1_drv.o                 670                21
     iar_stm32f407zg_sk.o       112       40       16
-    main.o                     936      112       60
+    main.o                     956      112       60
     misc.o                     112
-    motor_pwm.o                484        8       42
-    rc_input_pwm.o             776                48
-    startup_stm32f4xx.o        716
+    motor_pwm.o                584        8       42
+    rc_input_pwm.o             840                48
+    startup_stm32f4xx.o        712
     stm32f4_usart.o            312                17
     stm32f4xx_gpio.o           266
     stm32f4xx_i2c.o            488
     stm32f4xx_it.o              24
     stm32f4xx_rcc.o            380       16       16
-    stm32f4xx_tim.o          1 448
+    stm32f4xx_tim.o          1 156
     stm32f4xx_usart.o          444
     system_stm32f4xx.o         340        4        4
     tm_stm32_ahrs_imu.o      3 364
     ------------------------------------------------
-    Total:                  11 840      180      224
+    Total:                  11 728      180      224
 
 command line: [2]
     ------------------------------------------------
@@ -441,7 +478,7 @@ shb_l.a: [6]
     Gaps                        28        2
     Linker created                       36    8 192
 ----------------------------------------------------
-    Grand Total:            19 394      358    8 556
+    Grand Total:            19 282      358    8 556
 
 
 *******************************************************************************
@@ -450,15 +487,15 @@ shb_l.a: [6]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.iar.init_table$$Base   0x08004a68          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x08004a8c          --   Gb  - Linker created -
-?main                   0x08004aad         Code  Gb  cmain.o [5]
+.iar.init_table$$Base   0x080049fc          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x08004a20          --   Gb  - Linker created -
+?main                   0x08004a41         Code  Gb  cmain.o [5]
 AHRSIMU                 0x200000b8   0x28  Data  Gb  main.o [1]
 APBAHBPrescTable        0x20000098   0x10  Data  Lc  stm32f4xx_rcc.o [1]
-Accl_Get                0x080040ad   0x72  Code  Gb  accl_drv.o [1]
-Altimu10_Init           0x080036c9  0x222  Code  Gb  altimu10_drv.o [1]
-AtomicExchange          0x08004639   0x16  Code  Gb  i2c1_drv.o [1]
-BusFault_Handler        0x08004af7    0x2  Code  Gb  stm32f4xx_it.o [1]
+Accl_Get                0x08004041   0x72  Code  Gb  accl_drv.o [1]
+Altimu10_Init           0x080035b9  0x222  Code  Gb  altimu10_drv.o [1]
+AtomicExchange          0x080045cd   0x16  Code  Gb  i2c1_drv.o [1]
+BusFault_Handler        0x08004a8b    0x2  Code  Gb  stm32f4xx_it.o [1]
 CCR1_Val                0x200000b0    0x2  Data  Gb  motor_pwm.o [1]
 CCR2_Val                0x200000b2    0x2  Data  Gb  motor_pwm.o [1]
 CCR3_Val                0x200000b4    0x2  Data  Gb  motor_pwm.o [1]
@@ -466,84 +503,82 @@ CCR4_Val                0x200000b6    0x2  Data  Gb  motor_pwm.o [1]
 CSTACK$$Base            0x10000000          --   Gb  - Linker created -
 CSTACK$$Limit           0x10002000          --   Gb  - Linker created -
 CriticalSecCntr         0x2000014c    0x4  Data  Gb  main.o [1]
-DebugMon_Handler        0x08004afd    0x2  Code  Gb  stm32f4xx_it.o [1]
-DelayResolution100us    0x080030e9    0xe  Code  Gb  main.o [1]
-EntrCritSection         0x08003409   0x1c  Code  Gb  main.o [1]
-ExtCritSection          0x08003425   0x1c  Code  Gb  main.o [1]
+DebugMon_Handler        0x08004a91    0x2  Code  Gb  stm32f4xx_it.o [1]
+DelayResolution100us    0x08002fc5    0xe  Code  Gb  main.o [1]
+EntrCritSection         0x080032f9   0x1c  Code  Gb  main.o [1]
+ExtCritSection          0x08003315   0x1c  Code  Gb  main.o [1]
 Frequency               0x20000160    0x4  Data  Gb  rc_input_pwm.o [1]
-GPIO_CLK                0x08004b08   0x10  Data  Gb  iar_stm32f407zg_sk.o [1]
-GPIO_Init               0x080044bd   0xa4  Code  Gb  stm32f4xx_gpio.o [1]
-GPIO_PIN                0x08004b34    0x8  Data  Gb  iar_stm32f407zg_sk.o [1]
+GPIO_CLK                0x08004a9c   0x10  Data  Gb  iar_stm32f407zg_sk.o [1]
+GPIO_Init               0x08004451   0xa4  Code  Gb  stm32f4xx_gpio.o [1]
+GPIO_PIN                0x08004ac8    0x8  Data  Gb  iar_stm32f407zg_sk.o [1]
 GPIO_PORT               0x20000088   0x10  Data  Gb  iar_stm32f407zg_sk.o [1]
-GPIO_PinAFConfig        0x08004577   0x50  Code  Gb  stm32f4xx_gpio.o [1]
-GPIO_ReadInputDataBit   0x08004561   0x16  Code  Gb  stm32f4xx_gpio.o [1]
-Gyro_Accl_Get           0x080038f1   0x78  Code  Gb  altimu10_drv.o [1]
-HardFault_Handler       0x08004af3    0x2  Code  Gb  stm32f4xx_it.o [1]
-I2C1_Close              0x08003647    0xc  Code  Gb  i2c1_drv.o [1]
-I2C1_DataTransfer       0x08003653   0x44  Code  Gb  i2c1_drv.o [1]
-I2C1_ER_IRQHandler      0x08003441   0x2a  Code  Gb  i2c1_drv.o [1]
-I2C1_EV_IRQHandler      0x0800346b   0xdc  Code  Gb  i2c1_drv.o [1]
-I2C1_Init               0x08003547   0xe8  Code  Gb  i2c1_drv.o [1]
-I2C1_Open               0x0800362f   0x18  Code  Gb  i2c1_drv.o [1]
-I2C_AcknowledgeConfig   0x080042dd   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_ClearFlag           0x08004335    0xc  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_Cmd                 0x08004289   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_DeInit              0x08004159   0x56  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_GenerateSTART       0x080042a5   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_GenerateSTOP        0x080042c1   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_GetLastEvent        0x0800431d   0x18  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_ITConfig            0x08004305   0x18  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_Init                0x080041af   0xc0  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_ReceiveData         0x080042ff    0x6  Code  Gb  stm32f4xx_i2c.o [1]
-I2C_SendData            0x080042f9    0x6  Code  Gb  stm32f4xx_i2c.o [1]
+GPIO_PinAFConfig        0x0800450b   0x50  Code  Gb  stm32f4xx_gpio.o [1]
+GPIO_ReadInputDataBit   0x080044f5   0x16  Code  Gb  stm32f4xx_gpio.o [1]
+Gyro_Accl_Get           0x080037e1   0x78  Code  Gb  altimu10_drv.o [1]
+HardFault_Handler       0x08004a87    0x2  Code  Gb  stm32f4xx_it.o [1]
+I2C1_Close              0x08003537    0xc  Code  Gb  i2c1_drv.o [1]
+I2C1_DataTransfer       0x08003543   0x44  Code  Gb  i2c1_drv.o [1]
+I2C1_ER_IRQHandler      0x08003331   0x2a  Code  Gb  i2c1_drv.o [1]
+I2C1_EV_IRQHandler      0x0800335b   0xdc  Code  Gb  i2c1_drv.o [1]
+I2C1_Init               0x08003437   0xe8  Code  Gb  i2c1_drv.o [1]
+I2C1_Open               0x0800351f   0x18  Code  Gb  i2c1_drv.o [1]
+I2C_AcknowledgeConfig   0x08004271   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_ClearFlag           0x080042c9    0xc  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_Cmd                 0x0800421d   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_DeInit              0x080040ed   0x56  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_GenerateSTART       0x08004239   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_GenerateSTOP        0x08004255   0x1c  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_GetLastEvent        0x080042b1   0x18  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_ITConfig            0x08004299   0x18  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_Init                0x08004143   0xc0  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_ReceiveData         0x08004293    0x6  Code  Gb  stm32f4xx_i2c.o [1]
+I2C_SendData            0x0800428d    0x6  Code  Gb  stm32f4xx_i2c.o [1]
 IC1Value                0x20000166    0x2  Data  Gb  rc_input_pwm.o [1]
-InitUSART2              0x08003a19   0xae  Code  Gb  stm32f4_usart.o [1]
+InitUSART2              0x08003909   0xae  Code  Gb  stm32f4_usart.o [1]
 LoadInt                 0x08002153   0x6e  Code  Lc  xprintflarge_nomb.o [3]
-Magn_Get                0x08003969   0x60  Code  Gb  altimu10_drv.o [1]
-MemManage_Handler       0x08004af5    0x2  Code  Gb  stm32f4xx_it.o [1]
-NMI_Handler             0x08004af1    0x2  Code  Gb  stm32f4xx_it.o [1]
-NVIC_Init               0x080045c9   0x60  Code  Gb  misc.o [1]
+Magn_Get                0x08003859   0x60  Code  Gb  altimu10_drv.o [1]
+MemManage_Handler       0x08004a89    0x2  Code  Gb  stm32f4xx_it.o [1]
+NMI_Handler             0x08004a85    0x2  Code  Gb  stm32f4xx_it.o [1]
+NVIC_Init               0x0800455d   0x60  Code  Gb  misc.o [1]
 NVIC_InitStructure      0x20000150    0x4  Data  Gb  rc_input_pwm.o [1]
-PendSV_Handler          0x08004aff    0x2  Code  Gb  stm32f4xx_it.o [1]
+NVIC_SetPriority        0x08002f75   0x22  Code  Lc  main.o [1]
+PendSV_Handler          0x08004a93    0x2  Code  Gb  stm32f4xx_it.o [1]
 Pitch                   0x20000158    0x4  Data  Gb  rc_input_pwm.o [1]
 Pitch_offset            0x20000144    0x4  Data  Gb  main.o [1]
 PrescalerValue          0x20000164    0x2  Data  Gb  motor_pwm.o [1]
-Press_Get               0x080039c9   0x50  Code  Gb  altimu10_drv.o [1]
-RCC_AHB1PeriphClockCmd  0x08004419   0x20  Code  Gb  stm32f4xx_rcc.o [1]
-RCC_AHB1PeriphResetCmd  0x08004459   0x20  Code  Gb  stm32f4xx_rcc.o [1]
-RCC_APB1PeriphClockCmd  0x08004439   0x20  Code  Gb  stm32f4xx_rcc.o [1]
-RCC_APB1PeriphResetCmd  0x08004479   0x20  Code  Gb  stm32f4xx_rcc.o [1]
-RCC_GetClocksFreq       0x08004341   0xd8  Code  Gb  stm32f4xx_rcc.o [1]
-Region$$Table$$Base     0x08004a68          --   Gb  - Linker created -
-Region$$Table$$Limit    0x08004a8c          --   Gb  - Linker created -
+Press_Get               0x080038b9   0x50  Code  Gb  altimu10_drv.o [1]
+RCC_AHB1PeriphClockCmd  0x080043ad   0x20  Code  Gb  stm32f4xx_rcc.o [1]
+RCC_AHB1PeriphResetCmd  0x080043ed   0x20  Code  Gb  stm32f4xx_rcc.o [1]
+RCC_APB1PeriphClockCmd  0x080043cd   0x20  Code  Gb  stm32f4xx_rcc.o [1]
+RCC_APB1PeriphResetCmd  0x0800440d   0x20  Code  Gb  stm32f4xx_rcc.o [1]
+RCC_GetClocksFreq       0x080042d5   0xd8  Code  Gb  stm32f4xx_rcc.o [1]
+Region$$Table$$Base     0x080049fc          --   Gb  - Linker created -
+Region$$Table$$Limit    0x08004a20          --   Gb  - Linker created -
 Roll                    0x2000015c    0x4  Data  Gb  rc_input_pwm.o [1]
 Roll_offset             0x20000148    0x4  Data  Gb  main.o [1]
-STM_LEDInit             0x0800403d   0x44  Code  Gb  iar_stm32f407zg_sk.o [1]
-STM_LEDToggle           0x08004081   0x20  Code  Gb  iar_stm32f407zg_sk.o [1]
-SVC_Handler             0x08004afb    0x2  Code  Gb  stm32f4xx_it.o [1]
-SetSysClock             0x0800485f   0xce  Code  Lc  system_stm32f4xx.o [1]
-SysTick_Config          0x080030bb   0x2e  Code  Lc  main.o [1]
-SysTick_Handler         0x08004b01    0x8  Code  Gb  stm32f4xx_it.o [1]
+STM_LEDInit             0x08003fd1   0x44  Code  Gb  iar_stm32f407zg_sk.o [1]
+STM_LEDToggle           0x08004015   0x20  Code  Gb  iar_stm32f407zg_sk.o [1]
+SVC_Handler             0x08004a8f    0x2  Code  Gb  stm32f4xx_it.o [1]
+SetSysClock             0x080047f3   0xce  Code  Lc  system_stm32f4xx.o [1]
+SysTick_Config          0x08002f97   0x2e  Code  Lc  main.o [1]
+SysTick_Handler         0x08004a95    0x8  Code  Gb  stm32f4xx_it.o [1]
 SystemCoreClock         0x200000a8    0x4  Data  Gb  system_stm32f4xx.o [1]
-SystemInit              0x0800480d   0x52  Code  Gb  system_stm32f4xx.o [1]
-TI1_Config              0x08002fb9   0x34  Code  Lc  stm32f4xx_tim.o [1]
-TI2_Config              0x08002fed   0x3a  Code  Lc  stm32f4xx_tim.o [1]
-TI3_Config              0x08003027   0x38  Code  Lc  stm32f4xx_tim.o [1]
-TI4_Config              0x0800305f   0x3a  Code  Lc  stm32f4xx_tim.o [1]
-TIM2_IRQHandler         0x08003f8f   0x74  Code  Gb  rc_input_pwm.o [1]
-TIM3_Config             0x08003b51   0x64  Code  Gb  motor_pwm.o [1]
-TIM4_IRQHandler         0x08003f0d   0x82  Code  Gb  rc_input_pwm.o [1]
-TIM_2_4_Config          0x08003d35   0xb8  Code  Gb  rc_input_pwm.o [1]
+SystemInit              0x080047a1   0x52  Code  Gb  system_stm32f4xx.o [1]
+TI1_Config              0x08002f07   0x34  Code  Lc  stm32f4xx_tim.o [1]
+TI2_Config              0x08002f3b   0x3a  Code  Lc  stm32f4xx_tim.o [1]
+TIM2_IRQHandler         0x08003f23   0x3c  Code  Gb  rc_input_pwm.o [1]
+TIM3_Config             0x08003a41   0x64  Code  Gb  motor_pwm.o [1]
+TIM4_IRQHandler         0x08003ed1   0x52  Code  Gb  rc_input_pwm.o [1]
+TIM5_IRQHandler         0x08003f5f   0x34  Code  Gb  rc_input_pwm.o [1]
+TIM_2_4_5_12_Config     0x08003c89   0xb8  Code  Gb  rc_input_pwm.o [1]
 TIM_ARRPreloadConfig    0x08002b59   0x1c  Code  Gb  stm32f4xx_tim.o [1]
-TIM_ClearITPendingBit   0x08002f7d    0x8  Code  Gb  stm32f4xx_tim.o [1]
+TIM_ClearITPendingBit   0x08002ecb    0x8  Code  Gb  stm32f4xx_tim.o [1]
 TIM_Cmd                 0x08002b75   0x1c  Code  Gb  stm32f4xx_tim.o [1]
-TIM_GetCapture1         0x08002ee1    0x4  Code  Gb  stm32f4xx_tim.o [1]
-TIM_GetCapture2         0x08002ee5    0x4  Code  Gb  stm32f4xx_tim.o [1]
-TIM_GetCapture3         0x08002ee9    0x4  Code  Gb  stm32f4xx_tim.o [1]
-TIM_GetCapture4         0x08002eed    0x4  Code  Gb  stm32f4xx_tim.o [1]
-TIM_GetITStatus         0x08002f55   0x28  Code  Gb  stm32f4xx_tim.o [1]
+TIM_GetCapture1         0x08002e5d    0x4  Code  Gb  stm32f4xx_tim.o [1]
+TIM_GetCapture2         0x08002e61    0x4  Code  Gb  stm32f4xx_tim.o [1]
+TIM_GetITStatus         0x08002ea3   0x28  Code  Gb  stm32f4xx_tim.o [1]
 TIM_ICInitStructure     0x2000011c    0xc  Data  Gb  rc_input_pwm.o [1]
-TIM_ITConfig            0x08002f3d   0x18  Code  Gb  stm32f4xx_tim.o [1]
+TIM_ITConfig            0x08002e8b   0x18  Code  Gb  stm32f4xx_tim.o [1]
 TIM_OC1Init             0x08002b91   0x78  Code  Gb  stm32f4xx_tim.o [1]
 TIM_OC1PreloadConfig    0x08002d95   0x10  Code  Gb  stm32f4xx_tim.o [1]
 TIM_OC2Init             0x08002c09   0x86  Code  Gb  stm32f4xx_tim.o [1]
@@ -554,15 +589,12 @@ TIM_OC4Init             0x08002d13   0x62  Code  Gb  stm32f4xx_tim.o [1]
 TIM_OC4PreloadConfig    0x08002dc7   0x12  Code  Gb  stm32f4xx_tim.o [1]
 TIM_OCInitStructure     0x200000e0   0x14  Data  Gb  motor_pwm.o [1]
 TIM_PWMIConfig          0x08002dd9   0x84  Code  Gb  stm32f4xx_tim.o [1]
-TIM_PWMIConfig3         0x08002e5d   0x84  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SelectInputTrigger  0x08002f85   0x10  Code  Gb  stm32f4xx_tim.o [1]
+TIM_SelectInputTrigger  0x08002ed3   0x10  Code  Gb  stm32f4xx_tim.o [1]
 TIM_SelectMasterSlaveMode
-                        0x08002fa7   0x12  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SelectSlaveMode     0x08002f95   0x12  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SetIC1Prescaler     0x08002ef1   0x12  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SetIC2Prescaler     0x08002f03   0x14  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SetIC3Prescaler     0x08002f17   0x12  Code  Gb  stm32f4xx_tim.o [1]
-TIM_SetIC4Prescaler     0x08002f29   0x14  Code  Gb  stm32f4xx_tim.o [1]
+                        0x08002ef5   0x12  Code  Gb  stm32f4xx_tim.o [1]
+TIM_SelectSlaveMode     0x08002ee3   0x12  Code  Gb  stm32f4xx_tim.o [1]
+TIM_SetIC1Prescaler     0x08002e65   0x12  Code  Gb  stm32f4xx_tim.o [1]
+TIM_SetIC2Prescaler     0x08002e77   0x14  Code  Gb  stm32f4xx_tim.o [1]
 TIM_TimeBaseInit        0x08002af1   0x68  Code  Gb  stm32f4xx_tim.o [1]
 TIM_TimeBaseStructure   0x20000104    0xc  Data  Gb  motor_pwm.o [1]
 TIM_TimeBaseStructure2  0x20000110    0xc  Data  Gb  rc_input_pwm.o [1]
@@ -571,19 +603,19 @@ TM_AHRSIMU_UpdateAHRS   0x08000395  0x820  Code  Gb  tm_stm32_ahrs_imu.o [1]
 TM_AHRSIMU_UpdateIMU    0x08000bb5  0x2f8  Code  Gb  tm_stm32_ahrs_imu.o [1]
 Throttle                0x20000168    0x2  Data  Gb  rc_input_pwm.o [1]
 TimingDelay             0x2000013c    0x4  Data  Lc  main.o [1]
-TimingDelay_Decrement   0x080030f7   0x14  Code  Gb  main.o [1]
-USART2_IRQHandler       0x08003ac7   0x50  Code  Gb  stm32f4_usart.o [1]
+TimingDelay_Decrement   0x08002fd3   0x14  Code  Gb  main.o [1]
+USART2_IRQHandler       0x080039b7   0x50  Code  Gb  stm32f4_usart.o [1]
 USART2_IRQHandler{1}{2}::cnt
                         0x2000016b    0x1  Data  Lc  stm32f4_usart.o [1]
 USART_ClearITPendingBit
-                        0x080047ef   0x1e  Code  Gb  stm32f4xx_usart.o [1]
-USART_Cmd               0x08004715   0x1c  Code  Gb  stm32f4xx_usart.o [1]
-USART_GetITStatus       0x0800478b   0x64  Code  Gb  stm32f4xx_usart.o [1]
-USART_ITConfig          0x08004739   0x52  Code  Gb  stm32f4xx_usart.o [1]
-USART_Init              0x08004651   0xb6  Code  Gb  stm32f4xx_usart.o [1]
-USART_SendData          0x08004731    0x8  Code  Gb  stm32f4xx_usart.o [1]
-USART_puts              0x08003b17   0x24  Code  Gb  stm32f4_usart.o [1]
-UsageFault_Handler      0x08004af9    0x2  Code  Gb  stm32f4xx_it.o [1]
+                        0x08004783   0x1e  Code  Gb  stm32f4xx_usart.o [1]
+USART_Cmd               0x080046a9   0x1c  Code  Gb  stm32f4xx_usart.o [1]
+USART_GetITStatus       0x0800471f   0x64  Code  Gb  stm32f4xx_usart.o [1]
+USART_ITConfig          0x080046cd   0x52  Code  Gb  stm32f4xx_usart.o [1]
+USART_Init              0x080045e5   0xb6  Code  Gb  stm32f4xx_usart.o [1]
+USART_SendData          0x080046c5    0x8  Code  Gb  stm32f4xx_usart.o [1]
+USART_puts              0x08003a07   0x24  Code  Gb  stm32f4_usart.o [1]
+UsageFault_Handler      0x08004a8d    0x2  Code  Gb  stm32f4xx_it.o [1]
 Yaw                     0x20000154    0x4  Data  Gb  rc_input_pwm.o [1]
 Yaw_offset              0x20000140    0x4  Data  Gb  main.o [1]
 _GenldLargeNoMb         0x0800254b  0x23e  Code  Lc  xprintflarge_nomb.o [3]
@@ -594,7 +626,6 @@ _Locale_lconv           0x20000000   0x50  Data  Gb  localeconv.o [3]
 _PrintfLargeNoMb        0x08001bb9  0x594  Code  Gb  xprintflarge_nomb.o [3]
 _PutcharsLargeNoMb      0x08002789   0x2e  Code  Lc  xprintflarge_nomb.o [3]
 _SProut                 0x08000efb    0xa  Code  Gb  xsprout.o [3]
-__NVIC_SetPriority      0x08003099   0x22  Code  Lc  main.o [1]
 __aeabi_cdcmple         0x080012f9         Code  Gb  DblCmpLe.o [4]
 __aeabi_cdrcmple        0x08001b89         Code  Gb  DblCmpGe.o [4]
 __aeabi_d2f             0x08001005         Code  Gb  DblToFlt.o [4]
@@ -608,8 +639,8 @@ __aeabi_f2d             0x08000ead         Code  Gb  FltToDbl.o [4]
 __aeabi_ldiv0           0x08002aed         Code  Gb  I64DivZer.o [5]
 __aeabi_ui2d            0x08002a55         Code  Gb  I32ToDbl.o [4]
 __aeabi_uldivmod        0x0800287d         Code  Gb  I64DivMod.o [5]
-__cmain                 0x08004aad         Code  Gb  cmain.o [5]
-__exit                  0x08004add   0x14  Code  Gb  exit.o [6]
+__cmain                 0x08004a41         Code  Gb  cmain.o [5]
+__exit                  0x08004a71   0x14  Code  Gb  exit.o [6]
 __iar_Atan              0x08001581  0x158  Code  Gb  xatan.o [4]
 __iar_Dnorm             0x080029e3   0x44  Code  Gb  xdnorm.o [4]
 __iar_Dtest             0x080012b9   0x30  Code  Gb  xdtest.o [4]
@@ -618,17 +649,17 @@ __iar_Locale_lconv_init
                         0x08002a71   0x3a  Code  Gb  localeconv.o [3]
 __iar_Memchr            0x08002825         Code  Gb  memchr.o [5]
 __iar_Strchr            0x080027d5         Code  Gb  strchr.o [5]
-__iar_copy_init3        0x080049f1   0x2c  Code  Gb  copy_init3.o [5]
+__iar_copy_init3        0x08004985   0x2c  Code  Gb  copy_init3.o [5]
 __iar_d2uiz             0x08002a35         Code  Gb  DblToI32.o [4]
 __iar_dadd              0x08001905         Code  Gb  DblAdd.o [4]
-__iar_data_init3        0x08004a1d   0x28  Code  Gb  data_init.o [5]
+__iar_data_init3        0x080049b1   0x28  Code  Gb  data_init.o [5]
 __iar_dlib_perthread_access
                         0x08001bb7    0x2  Code  Gb  xtls.o [3]
 __iar_dsub              0x08001785         Code  Gb  DblSub.o [4]
 __iar_dsubStart         0x08001797         Code  Gb  DblSub.o [4]
 __iar_edom              0x080012ad         Code  Gb  iarEdom.o [5]
-__iar_init_vfp          0x08004a45         Code  Gb  fpinit_M.o [4]
-__iar_program_start     0x08004b29         Code  Gb  cstartup_M.o [5]
+__iar_init_vfp          0x080049d9         Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x08004abd         Code  Gb  cstartup_M.o [5]
 __iar_sqrt              0x08000f15         Code  Gb  sqrt.o [4]
 __iar_ui2d              0x08002a59         Code  Gb  I32ToDbl.o [4]
 __iar_unaligned___aeabi_memcpy
@@ -641,22 +672,23 @@ __iar_vfp_asin          0x0800129d   0x10  Code  Gb  asin.o [4]
 __iar_vfp_atan2         0x08001175   0x14  Code  Gb  atan2.o [4]
 __iar_vfp_sqrt          0x08000f05         Code  Gb  sqrt.o [4]
 __iar_vfp_sqrtl         0x08000f05         Code  Gb  sqrt.o [4]
-__iar_zero_init3        0x080049b1   0x40  Code  Gb  zero_init3.o [5]
-__low_level_init        0x08004ac7    0x4  Code  Gb  low_level_init.o [3]
+__iar_zero_init3        0x08004945   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x08004a5b    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x08000000         Data  Gb  startup_stm32f4xx.o [1]
-_call_main              0x08004ab9         Code  Gb  cmain.o [5]
-_exit                   0x08004ad1         Code  Gb  cexit.o [5]
-_main                   0x08004ac3         Code  Gb  cmain.o [5]
+_call_main              0x08004a4d         Code  Gb  cmain.o [5]
+_exit                   0x08004a65         Code  Gb  cexit.o [5]
+_main                   0x08004a57         Code  Gb  cmain.o [5]
 a                       0x08001730   0x40  Data  Lc  xatan.o [4]
 asin                    0x08001189   0xfe  Code  Gb  asin.o [4]
 atan2                   0x08001095   0xd0  Code  Gb  atan2.o [4]
 calculateAngles         0x080001b1  0x1aa  Code  Lc  tm_stm32_ahrs_imu.o [1]
+calibrateESCs           0x08003b77   0x64  Code  Gb  motor_pwm.o [1]
 div                     0x08002add    0xe  Code  Gb  div.o [3]
-exit                    0x08004acb    0x4  Code  Gb  exit.o [3]
-initMotorPWM            0x08003bb5   0xd2  Code  Gb  motor_pwm.o [1]
-initReceiverPWM         0x08003ded  0x120  Code  Gb  rc_input_pwm.o [1]
+exit                    0x08004a5f    0x4  Code  Gb  exit.o [3]
+initMotorPWM            0x08003aa5   0xd2  Code  Gb  motor_pwm.o [1]
+initReceiverPWM         0x08003d41  0x190  Code  Gb  rc_input_pwm.o [1]
 localeconv              0x08002aab   0x16  Code  Gb  localeconv.o [3]
-main                    0x0800310d  0x29e  Code  Gb  main.o [1]
+main                    0x08002fe9  0x2b2  Code  Gb  main.o [1]
 memchr                  0x08002825         Code  Gb  memchr.o [5]
 oneOverSqrt             0x08000189   0x28  Code  Lc  tm_stm32_ahrs_imu.o [1]
 received_string         0x200000f4   0x10  Data  Gb  stm32f4_usart.o [1]
@@ -666,25 +698,25 @@ s_I2C_NotUsed           0x20000128    0x4  Data  Lc  i2c1_drv.o [1]
 s_Size                  0x20000134    0x4  Data  Lc  i2c1_drv.o [1]
 s_SlaveAddr             0x2000016a    0x1  Data  Lc  i2c1_drv.o [1]
 s_pData                 0x20000138    0x4  Data  Lc  i2c1_drv.o [1]
-setFrontLeftPwmValue    0x08003c87   0x20  Code  Gb  motor_pwm.o [1]
-setFrontRightPwmValue   0x08003ca7   0x20  Code  Gb  motor_pwm.o [1]
-setRearLeftPwmValue     0x08003cc7   0x20  Code  Gb  motor_pwm.o [1]
-setRearRightPwmValue    0x08003ce7   0x20  Code  Gb  motor_pwm.o [1]
-sprintf                 0x08004125   0x34  Code  Gb  sprintf.o [3]
+setFrontLeftPwmValue    0x08003bdb   0x20  Code  Gb  motor_pwm.o [1]
+setFrontRightPwmValue   0x08003bfb   0x20  Code  Gb  motor_pwm.o [1]
+setRearLeftPwmValue     0x08003c1b   0x20  Code  Gb  motor_pwm.o [1]
+setRearRightPwmValue    0x08003c3b   0x20  Code  Gb  motor_pwm.o [1]
+sprintf                 0x080040b9   0x34  Code  Gb  sprintf.o [3]
 sqrt                    0x08000f15         Code  Gb  sqrt.o [4]
 sqrtl                   0x08000f15         Code  Gb  sqrt.o [4]
 strchr                  0x080027d5         Code  Gb  strchr.o [5]
 strlen                  0x080027ed         Code  Gb  strlen.o [5]
 
 
-[1] = C:\Users\MSI\Documents\IAR Embedded Workbench\arm\7.80.3\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash Debug\Obj
+[1] = C:\Users\vakkas.celik\Documents\IAR Embedded Workbench\arm\7.80.1\ST\STM32F4xx\IAR-STM32F407ZG-SK\vcQuadcopter\Flash Debug\Obj
 [2] = command line
 [3] = dl7M_tlf.a
 [4] = m7M_tls.a
 [5] = rt7M_tl.a
 [6] = shb_l.a
 
-  19 394 bytes of readonly  code memory
+  19 282 bytes of readonly  code memory
      358 bytes of readonly  data memory
    8 556 bytes of readwrite data memory
 

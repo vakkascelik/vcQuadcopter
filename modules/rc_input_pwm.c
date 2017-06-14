@@ -24,7 +24,7 @@ uint32_t Frequency     = 0;
 
 void initReceiverPWM();
 
-void TIM_2_4_Config(void)
+void TIM_2_4_5_12_Config(void)
 {
   GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -35,123 +35,106 @@ void TIM_2_4_Config(void)
   /* GPIOA and GPIOD clock enable */
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOD, ENABLE);
   
-  /* GPIOD Configuration: TIM4 CH1 (PD12) and TIM4 CH3 (PD14) and TIM4 CH3 (PBx) and TIM4 CH4 (PBx) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_14;// | GPIO_Pin_x | GPIO_Pin_x ;
+  /* GPIOD Configuration: TIM4 CH1 (PD12)  */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;// | GPIO_Pin_x | GPIO_Pin_x ;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
   GPIO_Init(GPIOD, &GPIO_InitStructure); 
   
-  /* GPIOA Configuration: TIM2 CH1 (PA15) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 ;
+  /* GPIOA Configuration: TIM2 CH1 (PA15) and TIM5 CH1 (PA0) */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_0 ;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
   GPIO_Init(GPIOA, &GPIO_InitStructure); 
   
-  /* GPIOA Configuration: TIM2 CH3 (PB10) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 ;
+  /* GPIOA Configuration: TIM12 CH1 (PB14) */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14 ;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-  /* Connect TIM3 pins to AF2 */  
+  /* Connect TIM pins to AF2 */  
   GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
-  GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4); 
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM4); 
   GPIO_PinAFConfig(GPIOA, GPIO_PinSource15, GPIO_AF_TIM2);
-  GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_TIM2); 
+  GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_TIM2); 
 }
 
 void initReceiverPWM()
 {
   /* TIM Configuration */
-  TIM_2_4_Config();
+  TIM_2_4_5_12_Config();
   
-  /* Enable the TIM2 global Interrupt */
-  NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
-//  NVIC_InitStructure.NVIC_IRQChannelPriority = 0;
-  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
-  
-  /* Enable the TIM2 global Interrupt */
+  /* Enable the TIM2, TIM4, TIM5, TIM12 global Interrupt */
   NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-//  NVIC_InitStructure.NVIC_IRQChannelPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+  
+  NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+  
+  NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+  
+  NVIC_InitStructure.NVIC_IRQChannel = TIM8_BRK_TIM12_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
 
-   /* --------------------------------------------------------------------------- 
-    TIM2 configuration: PWM Input mode
-     The external signal is connected to TIM2 CH2 pin (PB.03)
-     TIM2 CCR2 is used to compute the frequency value 
-     TIM2 CCR1 is used to compute the duty cycle value
 
-    In this example TIM2 input clock (TIM2CLK) is set to APB1 clock (PCLK1), since
-    APB1 prescaler is set to 1.
-      TIM2CLK = PCLK1 = HCLK = SystemCoreClock
-
-    External Signal Frequency = SystemCoreClock / TIM2_CCR2 in Hz.
-    External Signal DutyCycle = (TIM2_CCR1*100)/(TIM2_CCR2) in %.
-  Note: 
-  SystemCoreClock variable holds HCLK frequency and is defined in system_stm32f0xx.c file.
-  Each time the core clock (HCLK) changes, user had to call SystemCoreClockUpdate()
-  function to update SystemCoreClock variable value. Otherwise, any configuration
-  based on this variable will be incorrect.
-  --------------------------------------------------------------------------- */
   /* Time base configuration */
   TIM_TimeBaseStructure2.TIM_Period = 65535;//down to 200hz
   TIM_TimeBaseStructure2.TIM_Prescaler = 83;//84-1
   TIM_TimeBaseStructure2.TIM_ClockDivision = 0;
   TIM_TimeBaseStructure2.TIM_CounterMode = TIM_CounterMode_Up;
-  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure2);
   TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure2);
+  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure2);
+  TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure2);
+  TIM_TimeBaseInit(TIM12, &TIM_TimeBaseStructure2);
   
   TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
   TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;
   TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI;
   TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;
   TIM_ICInitStructure.TIM_ICFilter = 0x00;
-  TIM_PWMIConfig(TIM4, &TIM_ICInitStructure);
   
-  TIM_ICInitStructure.TIM_Channel = TIM_Channel_3;
-  TIM_PWMIConfig3(TIM4, &TIM_ICInitStructure);
-
-  /* Select the TIM4 Input Trigger: TI1FP1 */
-  TIM_SelectInputTrigger(TIM4, TIM_TS_TI1FP1);
-
-  /* Select the slave Mode: Reset Mode */
-  TIM_SelectSlaveMode(TIM4, TIM_SlaveMode_Reset);
-  TIM_SelectMasterSlaveMode(TIM4,TIM_MasterSlaveMode_Enable);
-
-  /* Enable the CC1,CC2 Interrupt Request */
-   TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);
-   TIM_ITConfig(TIM4, TIM_IT_CC3, ENABLE);
- 
-  /* TIM enable counter */
-  TIM_Cmd(TIM4, ENABLE);  
+  TIM_PWMIConfig(TIM4, &TIM_ICInitStructure);  
+  TIM_SelectInputTrigger(TIM4, TIM_TS_TI1FP1);                  // Select the TIM4 Input Trigger: TI1FP1 
+  TIM_SelectSlaveMode(TIM4, TIM_SlaveMode_Reset);               // Select the slave Mode: Reset Mode 
+  TIM_SelectMasterSlaveMode(TIM4,TIM_MasterSlaveMode_Enable); 
+  TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);                      // Enable the CC1,CC2 Interrupt Request 
+  TIM_Cmd(TIM4, ENABLE);                                        // TIM enable counter
   
   TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
-  TIM_PWMIConfig(TIM2, &TIM_ICInitStructure);
+  TIM_PWMIConfig(TIM2, &TIM_ICInitStructure);  
+  TIM_SelectInputTrigger(TIM2, TIM_TS_TI1FP1);                  // Select the TIM4 Input Trigger: TI1FP1 
+  TIM_SelectSlaveMode(TIM2, TIM_SlaveMode_Reset);               // Select the slave Mode: Reset Mode 
+  TIM_SelectMasterSlaveMode(TIM2,TIM_MasterSlaveMode_Enable); 
+  TIM_ITConfig(TIM2, TIM_IT_CC1, ENABLE);                      // Enable the CC1,CC2 Interrupt Request 
+  TIM_Cmd(TIM2, ENABLE);                                        // TIM enable counter
   
-  TIM_ICInitStructure.TIM_Channel = TIM_Channel_3;
-  TIM_PWMIConfig3(TIM2, &TIM_ICInitStructure);
-
-  /* Select the TIM2 Input Trigger: TI1FP1 */
-  TIM_SelectInputTrigger(TIM2, TIM_TS_TI1FP1);
-
-  /* Select the slave Mode: Reset Mode */
-  TIM_SelectSlaveMode(TIM2, TIM_SlaveMode_Reset);
-  TIM_SelectMasterSlaveMode(TIM2,TIM_MasterSlaveMode_Enable);
-
-  /* Enable the CC1,CC2,CC3,CC4 Interrupt Request */
-   TIM_ITConfig(TIM2, TIM_IT_CC1, ENABLE);
-   TIM_ITConfig(TIM2, TIM_IT_CC3, ENABLE);
+  TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
+  TIM_PWMIConfig(TIM5, &TIM_ICInitStructure);  
+  TIM_SelectInputTrigger(TIM5, TIM_TS_TI1FP1);                  // Select the TIM4 Input Trigger: TI1FP1 
+  TIM_SelectSlaveMode(TIM5, TIM_SlaveMode_Reset);               // Select the slave Mode: Reset Mode 
+  TIM_SelectMasterSlaveMode(TIM5,TIM_MasterSlaveMode_Enable); 
+  TIM_ITConfig(TIM5, TIM_IT_CC1, ENABLE);                      // Enable the CC1,CC2 Interrupt Request 
+  TIM_Cmd(TIM5, ENABLE);    
   
-    /* TIM enable counter */
-  TIM_Cmd(TIM2, ENABLE);
+  TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
+  TIM_PWMIConfig(TIM12, &TIM_ICInitStructure);  
+  TIM_SelectInputTrigger(TIM12, TIM_TS_TI1FP1);                  // Select the TIM4 Input Trigger: TI1FP1 
+  TIM_SelectSlaveMode(TIM12, TIM_SlaveMode_Reset);               // Select the slave Mode: Reset Mode 
+  TIM_SelectMasterSlaveMode(TIM12,TIM_MasterSlaveMode_Enable); 
+  TIM_ITConfig(TIM12, TIM_IT_CC1, ENABLE);                      // Enable the CC1,CC2 Interrupt Request 
+  TIM_Cmd(TIM12, ENABLE);    
 }
 
 
@@ -181,22 +164,6 @@ void TIM4_IRQHandler(void)
       Frequency = 0;
     }
   }
-  
-  if (TIM_GetITStatus(TIM4, TIM_IT_CC3) != RESET) 
-  { 
-    // Clear TIM2 Capture compare interrupt pending bit 
-    TIM_ClearITPendingBit(TIM4, TIM_IT_CC3);
-
-    if (TIM_GetCapture3(TIM4) != 0)
-    {
-      // Duty cycle computation 
-      Yaw = TIM_GetCapture4(TIM4);//(IC4Value * 100) / IC3Value;
-    }
-    else
-    {
-      Yaw = 0;
-    }
-  }
 }
 
 void TIM2_IRQHandler(void)
@@ -216,21 +183,44 @@ void TIM2_IRQHandler(void)
       Roll = 0;
     }
   }
-  
-  if (TIM_GetITStatus(TIM2, TIM_IT_CC3) != RESET) 
+}
+
+
+void TIM5_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM5, TIM_IT_CC1) != RESET) 
   { 
     // Clear TIM2 Capture compare interrupt pending bit 
-    TIM_ClearITPendingBit(TIM2, TIM_IT_CC3);
+    TIM_ClearITPendingBit(TIM5, TIM_IT_CC1);
 
-    if (TIM_GetCapture3(TIM2) != 0)
+    if (TIM_GetCapture1(TIM5) != 0)
     {
       // Duty cycle computation 
-      Pitch = TIM_GetCapture4(TIM2);// * 100) / IC4Value;
+      Yaw = TIM_GetCapture2(TIM5);// * 100) / IC3Value;
+    }
+    else
+    {
+      Yaw = 0;
+    }
+  }
+}
+
+
+void TIM12_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM12, TIM_IT_CC1) != RESET) 
+  { 
+    // Clear TIM2 Capture compare interrupt pending bit 
+    TIM_ClearITPendingBit(TIM12, TIM_IT_CC1);
+
+    if (TIM_GetCapture1(TIM12) != 0)
+    {
+      // Duty cycle computation 
+      Pitch = TIM_GetCapture2(TIM12);// * 100) / IC3Value;
     }
     else
     {
       Pitch = 0;
     }
   }
-
 }

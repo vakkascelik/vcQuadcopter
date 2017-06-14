@@ -23,6 +23,7 @@ void setFrontLeftPwmValue (uint16_t value);
 void setFrontRightPwmValue (uint16_t value);
 void setRearLeftPwmValue (uint16_t value);
 void setRearRightPwmValue (uint16_t value);
+void calibrateESCs(void);
 
 void TIM3_Config(void)
 {
@@ -102,6 +103,25 @@ void initMotorPWM()
   TIM_Cmd(TIM3, ENABLE);
 }
 
+void calibrateESCs(void)
+{
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OCInitStructure.TIM_Pulse = 1871;      
+  TIM_OC1Init(TIM3, &TIM_OCInitStructure);
+  TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+  
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OC2Init(TIM3, &TIM_OCInitStructure);
+  TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable); 
+  
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OC3Init(TIM3, &TIM_OCInitStructure);
+  TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);  
+  
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OC4Init(TIM3, &TIM_OCInitStructure);
+  TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable); 
+}
 
 void setFrontLeftPwmValue (uint16_t value)
 {
