@@ -84,9 +84,6 @@ I didn't tested that, but you might use the same ECHO pin for all sensors if you
 @endverbatim
  */
 #include "stm32f4xx.h"
-#include "defines.h"
-#include "tm_stm32f4_delay.h"
-#include "tm_stm32f4_gpio.h"
 
 /**
  * @defgroup TM_HCSR04_Macros
