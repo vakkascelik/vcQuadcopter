@@ -29,8 +29,10 @@ void TIM_2_4_5_12_Config(void)
   GPIO_InitTypeDef GPIO_InitStructure;
 
   /* TIM2 and TIM4 clock enable */
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM12, ENABLE);
 
   /* GPIOA and GPIOD clock enable */
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOD, ENABLE);
@@ -61,9 +63,9 @@ void TIM_2_4_5_12_Config(void)
 
   /* Connect TIM pins to AF2 */  
   GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
-  GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM4); 
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM5); 
   GPIO_PinAFConfig(GPIOA, GPIO_PinSource15, GPIO_AF_TIM2);
-  GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_TIM2); 
+  GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_TIM12); 
 }
 
 void initReceiverPWM()
@@ -206,7 +208,7 @@ void TIM5_IRQHandler(void)
 }
 
 
-void TIM12_IRQHandler(void)
+void TIM8_BRK_TIM12_IRQHandler(void)
 {
   if (TIM_GetITStatus(TIM12, TIM_IT_CC1) != RESET) 
   { 

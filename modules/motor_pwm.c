@@ -11,13 +11,10 @@
 
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
-uint16_t CCR1_Val = 1000-1;
-uint16_t CCR2_Val = 1000-1;
-uint16_t CCR3_Val = 1000-1;
-uint16_t CCR4_Val = 1000-1;
+
 uint16_t PrescalerValue = 0;
 
-void initMotorPWM();
+void initMotorPWM(uint16_t value);
 void TIM3_Config(void);
 void setFrontLeftPwmValue (uint16_t value);
 void setFrontRightPwmValue (uint16_t value);
@@ -51,7 +48,7 @@ void TIM3_Config(void)
   GPIO_PinAFConfig(GPIOC, GPIO_PinSource9, GPIO_AF_TIM3); 
 }
 
-void initMotorPWM()
+void initMotorPWM(uint16_t value)
 {
   /* TIM Configuration */
   TIM3_Config();
@@ -70,7 +67,7 @@ void initMotorPWM()
   /* PWM1 Mode configuration: Channel1 */
   TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-  TIM_OCInitStructure.TIM_Pulse = CCR1_Val;//1000-1
+  TIM_OCInitStructure.TIM_Pulse = value;
   TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
   TIM_OC1Init(TIM3, &TIM_OCInitStructure);
@@ -78,21 +75,21 @@ void initMotorPWM()
 
   /* PWM1 Mode configuration: Channel2 */
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-  TIM_OCInitStructure.TIM_Pulse = CCR2_Val;
+  TIM_OCInitStructure.TIM_Pulse = value;
 
   TIM_OC2Init(TIM3, &TIM_OCInitStructure);
   TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
 
   /* PWM1 Mode configuration: Channel3 */
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-  TIM_OCInitStructure.TIM_Pulse = CCR3_Val;
+  TIM_OCInitStructure.TIM_Pulse = value;
 
   TIM_OC3Init(TIM3, &TIM_OCInitStructure);
   TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
 
   /* PWM1 Mode configuration: Channel4 */
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-  TIM_OCInitStructure.TIM_Pulse = CCR4_Val;
+  TIM_OCInitStructure.TIM_Pulse = value;
 
   TIM_OC4Init(TIM3, &TIM_OCInitStructure);
   TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);

@@ -40,6 +40,8 @@
 
 /* AHRS/IMU structure */
 TM_AHRSIMU_t AHRSIMU;
+/* HCSR04 Instance */
+TM_HCSR04_t HCSR04;
 
 static volatile Int32U TimingDelay;
 
@@ -54,7 +56,7 @@ int32_t Roll_offset;
 
 extern void initReceiverPWM();
 
-extern void initMotorPWM();
+extern void initMotorPWM(uint16_t value);
 extern void setFrontLeftPwmValue (uint16_t value);
 extern void setFrontRightPwmValue (uint16_t value);
 extern void setRearLeftPwmValue (uint16_t value);
@@ -167,17 +169,28 @@ int main(void)
   InitUSART2(19200);
   USART_puts(USART2, "Init complete! Hello World!\r\n"); // just send a message to indicate that it works
   
+  
+  STM_LEDInit(LED1);
 
-  initMotorPWM();
-  DelayResolution100us(30000);  // 3 seconds delay
+  initMotorPWM(1072);
+/*  DelayResolution100us(30000);  // 3 seconds delay
   calibrateESCs();
   DelayResolution100us(20000);  // 2 seconds delay
-  initReceiverPWM();
+*/  initReceiverPWM();
   
   /* Init structure with 1000hZ sample rate, 0.5 beta and 0 inclination (3.5 degrees is inclination in Ljubljana, Slovenia) on July, 2016 */
   TM_AHRSIMU_Init(&AHRSIMU, 1000, 0.5, 0);
   
-  STM_LEDInit(LED1);
+  /* Initialize distance sensor1 on pins; ECHO: PD0, TRIGGER: PC1 */
+  if (!TM_HCSR04_Init(&HCSR04, GPIOD, GPIO_PIN_0, GPIOC, GPIO_PIN_1)) {
+      /* Sensor is not ready to use */
+      /* Maybe wiring is incorrect */
+  /*    while (1) {
+          STM_LEDToggle(LED1);
+          Delayms(100);
+      }*/
+  }
+    
   DelayResolution100us(100000/TICK_PER_SEC);
   while(1)
   {
@@ -186,6 +199,11 @@ int main(void)
 
     /* Toggle LED1 */
     STM_LEDToggle(LED1);
+    
+    /* Read distance from sensor 1 */
+    /* Distance is returned in cm and also stored in structure */
+    /* You can use both ways */
+    TM_HCSR04_Read(&HCSR04);
        
     /* Read data from accelerometer */
     Accl_Get(&X,&Y,&Z);
@@ -211,9 +229,9 @@ int main(void)
     /* This function must be called periodically in inteervals set by sample rate on initialization process */
     TM_AHRSIMU_UpdateAHRS(&AHRSIMU, AHRSIMU_DEG2RAD(gx), AHRSIMU_DEG2RAD(gy), AHRSIMU_DEG2RAD(gz), ax, ay, az, mx, my, mz);
     
-    Yaw_offset=Yaw-4096;
-    Pitch_offset=Pitch-4096;
-    Roll_offset=Roll-1482;
+    Yaw_offset=Yaw-1482;
+    Pitch_offset=Pitch-1535;
+    Roll_offset=Roll-1485;
     
     /* Read new roll, pitch and yaw values */
     sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
@@ -239,15 +257,18 @@ int main(void)
     pitchPID = 0;//KP_pitch*pError_pitch + KI_pitch*iError_pitch + KD_pitch*dError_pitch;
     rollPID  = 0;//KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
     
-    fronleft_Throttle   = (Throttle + pitchPID + rollPID - yawPID + Pitch_offset + Roll_offset - Yaw_offset);
-    frontright_Throttle = (Throttle + pitchPID - rollPID + yawPID + Pitch_offset - Roll_offset + Yaw_offset);
-    rearleft_Throttle   = (Throttle - pitchPID + rollPID + yawPID - Pitch_offset + Roll_offset + Yaw_offset);
-    rearright_Throttle  = (Throttle - pitchPID - rollPID - yawPID - Pitch_offset - Roll_offset - Yaw_offset);
+    fronleft_Throttle   = (Throttle + pitchPID + rollPID - yawPID - Pitch_offset - Roll_offset + Yaw_offset);
+    frontright_Throttle = (Throttle + pitchPID - rollPID + yawPID - Pitch_offset + Roll_offset - Yaw_offset);
+    rearleft_Throttle   = (Throttle - pitchPID + rollPID + yawPID + Pitch_offset - Roll_offset - Yaw_offset);
+    rearright_Throttle  = (Throttle - pitchPID - rollPID - yawPID + Pitch_offset + Roll_offset + Yaw_offset);
       
-    setFrontLeftPwmValue((uint16_t)fronleft_Throttle);
-    setFrontRightPwmValue((uint16_t)frontright_Throttle);
-    setRearLeftPwmValue((uint16_t)rearleft_Throttle);
-    setRearRightPwmValue((uint16_t)rearright_Throttle);
+    if( 1065<Throttle && Throttle< 1900)
+    {
+      setFrontLeftPwmValue((uint16_t)fronleft_Throttle);
+      setFrontRightPwmValue((uint16_t)frontright_Throttle);
+      setRearLeftPwmValue((uint16_t)rearleft_Throttle);
+      setRearRightPwmValue((uint16_t)rearright_Throttle);
+    }
     
  /*   
     FrontLeft   = throttle + pitch + roll - yaw

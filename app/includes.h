@@ -26,6 +26,7 @@
 #include "iar_stm32f407zg_sk.h"
 
 #include "tm_stm32_ahrs_imu.h"
+#include "tm_stm32f4_hcsr04.h"
 
 #include "accl_drv.h"
 #include "i2c1_drv.h"
