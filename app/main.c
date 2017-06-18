@@ -54,6 +54,18 @@ int32_t Yaw_offset;
 int32_t Pitch_offset;
 int32_t Roll_offset;
 
+uint16_t fronleft_Throttle, frontright_Throttle, rearleft_Throttle, rearright_Throttle;
+
+float yawPID, pitchPID, rollPID;
+  
+float KP_yaw=0.5, KI_yaw=0, KD_yaw=0.1;
+float KP_pitch=0.5, KI_pitch=0, KD_pitch=0.1;
+float KP_roll=0.5, KI_roll=0, KD_roll=0.1;
+
+float pError_yaw, iError_yaw, dError_yaw, previousError_yaw;
+float pError_pitch, iError_pitch, dError_pitch, previousError_pitch;
+float pError_roll, iError_roll, dError_roll, previousError_roll;  
+
 extern void initReceiverPWM();
 
 extern void initMotorPWM(uint16_t value);
@@ -123,18 +135,6 @@ int main(void)
   Int32S press; 
   
   float gx, gy, gz, ax, ay, az, mx, my, mz;
-  
-  float KP_yaw=0.5, KI_yaw=0, KD_yaw=0.1;
-  float KP_pitch=0.5, KI_pitch=0, KD_pitch=0.1;
-  float KP_roll=0.5, KI_roll=0, KD_roll=0.1;
-  
-  float pError_yaw, iError_yaw, dError_yaw, previousError_yaw;
-  float pError_pitch, iError_pitch, dError_pitch, previousError_pitch;
-  float pError_roll, iError_roll, dError_roll, previousError_roll;
-  
-  int16_t yawPID, pitchPID, rollPID;
-  
-  uint16_t fronleft_Throttle, frontright_Throttle, rearleft_Throttle, rearright_Throttle;
   
   uint16_t usart_receive;
   
@@ -239,12 +239,14 @@ int main(void)
      
     if( 1065<Throttle && Throttle< 1900)
     {
-      if(firstSenseRead)
+      if(firstSenseRead<100)
       {
-        firstSenseRead=0;
+        firstSenseRead++;
         firstYawRead=AHRSIMU.Yaw;
         firstRollRead=AHRSIMU.Roll;
-        firstPitchRead=AHRSIMU.Pitch;        
+        firstPitchRead=AHRSIMU.Pitch;  
+        if(firstRollRead<0)
+          firstRollRead+=360;
       }
       else
       {
@@ -257,7 +259,7 @@ int main(void)
         iError_yaw = iError_yaw + pError_yaw;
         dError_yaw = (pError_yaw - previousError_yaw);
         previousError_yaw = pError_yaw;
-        if (pError_yaw = 0)
+        if (pError_yaw == 0)
           iError_yaw = 0;
         if ( abs(pError_yaw) > 40)
           iError_yaw = 0;
@@ -266,16 +268,19 @@ int main(void)
         iError_pitch = iError_pitch + pError_pitch;
         dError_pitch = (pError_pitch - previousError_pitch);
         previousError_pitch = pError_pitch;
-        if (pError_pitch = 0)
+        if (pError_pitch == 0)
           iError_pitch = 0;
         if ( abs(pError_pitch) > 40)
-          iError_pitch = 0;
+          iError_pitch = 0;  
         
+        
+        if(AHRSIMU.Roll<0)
+          AHRSIMU.Roll+=360;
         pError_roll = firstRollRead - AHRSIMU.Roll;
         iError_roll = iError_roll + pError_roll;
         dError_roll = (pError_roll - previousError_roll);
         previousError_roll = pError_roll;
-        if (pError_roll = 0)
+        if (pError_roll == 0)
           iError_roll = 0;
         if ( abs(pError_roll) > 40)
           iError_roll = 0;
@@ -285,15 +290,18 @@ int main(void)
         rollPID  = KP_roll*pError_roll   + KI_roll*iError_roll   + KD_roll*dError_roll;
 
         /* Read new roll, pitch and yaw values */
-     //   sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
-        sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, pError_roll, pError_pitch, pError_yaw);
+        sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, AHRSIMU.Roll, AHRSIMU.Pitch, AHRSIMU.Yaw);
+     //   sprintf(log,"Throttle:%d, Roll: %d; Pitch: %d, Yaw: %d --- pRoll: %f; pPitch: %f, pYaw: %f\r\n", Throttle, Roll_offset, Pitch_offset, Yaw_offset, pError_roll, pError_pitch, pError_yaw);
         USART_puts(USART2, log);
     
-        fronleft_Throttle   = (Throttle + pitchPID + rollPID - yawPID - Pitch_offset - Roll_offset + Yaw_offset);
-        frontright_Throttle = (Throttle + pitchPID - rollPID + yawPID - Pitch_offset + Roll_offset - Yaw_offset);
-        rearleft_Throttle   = (Throttle - pitchPID + rollPID + yawPID + Pitch_offset - Roll_offset - Yaw_offset);
-        rearright_Throttle  = (Throttle - pitchPID - rollPID - yawPID + Pitch_offset + Roll_offset + Yaw_offset);
+        fronleft_Throttle   = (Throttle - Pitch_offset - Roll_offset + Yaw_offset);
+        frontright_Throttle = (Throttle - Pitch_offset + Roll_offset - Yaw_offset);
+        rearleft_Throttle   = (Throttle + Pitch_offset + Roll_offset - Yaw_offset);
+        rearright_Throttle  = (Throttle + Pitch_offset - Roll_offset + Yaw_offset);
         
+ //       sprintf(log,"fronleft_Throttle:%d, frontright_Throttle: %d; rearleft_Throttle: %d, rearright_Throttle: %d \r\n", fronleft_Throttle, frontright_Throttle, rearleft_Throttle, rearright_Throttle);
+ //       USART_puts(USART2, log);
+                
         setFrontLeftPwmValue((uint16_t)fronleft_Throttle);
         setFrontRightPwmValue((uint16_t)frontright_Throttle);
         setRearLeftPwmValue((uint16_t)rearleft_Throttle);
